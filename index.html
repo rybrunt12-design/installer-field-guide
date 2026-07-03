@@ -1,0 +1,1527 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Installer Onboarding — Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#15364e;--navy2:#1e4a68;--blue:#1273a8;--ink:#26323a;--mut:#6b7a85;--paper:#f7f6f3;--card:#fff;--line:#e6e4de;--soft:#eef4f7;--accent:#cfe5ef;--stub:#a8442f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:15.5px/1.7 "Poppins",-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper)}
+.app{display:grid;grid-template-columns:290px 1fr;min-height:100vh}
+aside{background:#fff;border-right:1px solid var(--line);position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{position:sticky;top:0;background:#fff;padding:24px 22px 14px;border-bottom:1px solid var(--line);z-index:5}
+.wordmark{font-weight:700;font-size:17px;letter-spacing:.02em;color:var(--navy)}
+.wordmark small{display:block;font-weight:600;font-size:10px;letter-spacing:.16em;color:var(--blue);text-transform:uppercase;margin-top:4px}
+.search{margin:14px 0 0;width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);font-size:13.5px;outline:none;color:var(--ink)}
+.search:focus{border-color:var(--blue)}
+.nav{padding:10px 12px 24px}
+.nav-item{display:block;color:#33424d;text-decoration:none;font-size:13.5px;padding:8px 12px;border-radius:7px;margin:1px 0;border-left:3px solid transparent}
+.nav-item b{color:var(--blue);margin-right:4px}
+.nav-item:hover{background:var(--paper)}
+.nav-item.active{background:var(--soft);border-left-color:var(--blue);color:var(--navy);font-weight:600}
+.nav-item.active b{color:var(--navy)}
+main{padding:42px 56px 110px;max-width:900px}
+.topline{font-size:12px;color:var(--mut);margin-bottom:16px;letter-spacing:.04em}
+.doc{display:none;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:46px 58px 54px;box-shadow:0 1px 3px rgba(21,54,78,.05)}
+.doc.show{display:block;animation:f .15s ease}
+@keyframes f{from{opacity:0}to{opacity:1}}
+h1{font-size:30px;font-weight:700;color:var(--navy);margin:.1em 0 .55em;line-height:1.22}
+h2{font-size:19px;font-weight:600;color:var(--navy2);margin:1.9em 0 .5em}
+h2:after{content:"";display:block;width:44px;height:3px;background:var(--blue);margin-top:7px;border-radius:2px}
+h3{font-size:15.5px;font-weight:700;color:var(--navy);margin:1.5em 0 .4em}
+h4{font-size:14px;font-weight:700;color:var(--navy);margin:1.3em 0 .3em}
+a{color:var(--blue)}a.ilink{font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
+a.ilink:hover{border-bottom-color:var(--blue)}
+blockquote{margin:18px 0;padding:14px 20px;background:var(--soft);border-left:3px solid var(--blue);border-radius:0 4px 4px 0;color:#274456;font-size:14.5px}
+blockquote p{margin:5px 0}
+.tw{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:420px}
+th{color:var(--navy);text-align:left;padding:9px 12px;font-weight:700;border-bottom:2px solid var(--navy)}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:2px solid var(--line)}
+code{background:#f1efe9;border-radius:4px;padding:1px 6px;font-size:12.5px;font-family:ui-monospace,SFMono-Regular,monospace;color:#4c443a}
+pre{background:var(--navy);color:#e9f2f8;padding:18px 22px;border-radius:6px;overflow-x:auto;font-size:13px}
+pre code{background:none;color:inherit;padding:0}
+img,svg{max-width:100%;height:auto}img{border-radius:6px;border:1px solid var(--line);margin:12px 0}
+ul,ol{padding-left:1.4em}li{margin:5px 0}
+li.task{list-style:none;margin-left:-1.2em}
+li.task label{cursor:pointer;display:flex;gap:9px;align-items:baseline}
+li.task input{accent-color:var(--blue);width:16px;height:16px;flex:none;transform:translateY(2px)}
+li.task.done label{color:var(--mut);text-decoration:line-through}
+hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+.warn{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--stub);color:#fff;font-weight:800;font-size:10.5px;margin-right:2px;vertical-align:-2px}
+.pn{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:18px;border-top:1px solid var(--line)}
+.pn-a{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--blue);padding:9px 14px;border:1px solid var(--line);border-radius:8px;max-width:48%}
+.pn-a:hover{background:var(--soft)}
+.hidden{display:none!important}
+@media(max-width:880px){
+ .app{grid-template-columns:1fr}
+ aside{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+ main{padding:18px 14px 90px}
+ .doc{padding:24px 18px}
+ .pn-a{max-width:none}
+}
+@media print{
+ .app{display:block}
+ aside,.topline,.pn{display:none}
+ body{background:#fff}
+ main{padding:0;max-width:none}
+ .doc{display:block!important;border:none;box-shadow:none;padding:0 0 24px;page-break-after:always}
+}
+</style></head><body><div class="app">
+<aside><div class="brand"><div class="wordmark">INSTALLER ONBOARDING<small>Water Softener &amp; RO · Field Guide</small></div>
+<input class="search" id="q" placeholder="Search the guide" autocomplete="off"></div>
+<div class="nav" id="nav"><a class="nav-item" href="#00-start-here-md">Start Here — Installer Onboarding</a><a class="nav-item" href="#01-the-systems-md"><b>1</b> The Systems You&#x27;ll Install</a><a class="nav-item" href="#02-before-the-job-md"><b>2</b> Before the Job — Prep &amp; What to Bring</a><a class="nav-item" href="#03-field-sop-md"><b>3</b> The Install — Step-by-Step (Field SOP)</a><a class="nav-item" href="#04-valve-programming-md"><b>4</b> Valve Programming</a><a class="nav-item" href="#05-ro-install-md"><b>5</b> Under-Sink RO Install</a><a class="nav-item" href="#06-startup-testing-verification-md"><b>6</b> Startup, Testing &amp; Verification</a><a class="nav-item" href="#07-customer-handoff-md"><b>7</b> Customer Handoff</a><a class="nav-item" href="#08-troubleshooting-callbacks-md"><b>8</b> Troubleshooting &amp; Callbacks</a><a class="nav-item" href="#09-standards-and-working-with-us-md"><b>9</b> Standards, Warranty &amp; Working With Us</a><a class="nav-item" href="#10-quick-reference-md"><b>10</b> Quick-Reference Cheat Sheet</a></div></aside>
+<main><div class="topline">Field Guide · Updated July 2026 · <a href="javascript:window.print()" style="color:var(--mut)">Print / save PDF</a></div>
+<article id="00-start-here-md" class="doc"><h1 id="start-here-installer-onboarding">Start Here — Installer Onboarding</h1>
+<p>This guide is everything you need to install our systems to our standard: the equipment, the field process, valve programming, testing, handoff, and the common callbacks. You already know plumbing — this teaches you <strong>our systems and our standard</strong>.</p>
+<h2 id="videos-and-diagrams">Videos and diagrams</h2>
+<p>Two kinds of media slots are marked throughout the guide:</p>
+<ul>
+<li>📹 <strong>Video</strong> — the step done live.</li>
+<li>🖼 <strong>Diagram</strong> — the layout or step drawn out.</li>
+</ul>
+<p>Core training videos are linked where they matter (the systems overview, the whole-home deep dive, valve programming, and the three water-test demos). A few slots still say <em>link coming soon</em> — don't wait on those; the written steps are complete on their own.</p>
+<h2 id="onboarding-checklist">Onboarding checklist</h2>
+<p>Work it top to bottom — this is the whole path from here to your first booked job:</p>
+<ul>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t1"> Read this page (5 min)</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t2"> Read sections 1–7 — the systems, prep, the install SOP, valve programming, the RO install, startup/testing, and customer handoff</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t3"> Skim <a href="#08-troubleshooting-callbacks-md" class="ilink">Troubleshooting</a> and keep <a href="#10-quick-reference-md" class="ilink">Quick Reference</a> on your phone for the job</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t4"> Watch the training videos — the systems overview and whole-home deep dive (linked in <a href="#01-the-systems-md" class="ilink">The Systems</a>) and the valve-programming walkthrough (linked in <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>)</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t5"> Send us proof of license + insurance so we can clear you</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t6"> Shadow an install — ask the office to schedule one</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t7"> Complete your first install (we review the first one)</label></li>
+<li class="task"><label><input type="checkbox" class="ck" data-k="00-start-here-md-t8"> Cleared — we start booking you</label></li>
+</ul>
+<h2 id="how-this-guide-is-organized">How this guide is organized</h2>
+<ol>
+<li><strong>The Systems You'll Install</strong> — what the equipment is and how it works</li>
+<li><strong>Before the Job</strong> — tools, materials, the full kit list, and finding the main/shut-off</li>
+<li><strong>The Install — Step-by-Step</strong> — the field SOP, start to finish</li>
+<li><strong>Valve Programming</strong> — set up the control valve</li>
+<li><strong>Under-Sink RO Install</strong> — the drinking-water system</li>
+<li><strong>Startup, Testing &amp; Verification</strong> — bring it online and prove it works</li>
+<li><strong>Customer Handoff</strong> — walk the homeowner through it</li>
+<li><strong>Troubleshooting &amp; Callbacks</strong> — fix and prevent the common issues</li>
+<li><strong>Standards, Warranty &amp; Working With Us</strong> — the quality bar, pay, and scheduling</li>
+<li><strong>Quick-Reference Cheat Sheet</strong> — the one-pager for the job site</li>
+</ol>
+<h2 id="who-provides-what-the-short-version">Who provides what — the short version</h2>
+<ul>
+<li><strong>We provide</strong> all the systems and equipment, plus the pre-scheduled jobs.</li>
+<li><strong>You provide</strong> your own tools and the install materials (pipes, 3/8" lines, fittings, diamond bit) — the full kit list is in <strong><a href="#02-before-the-job-md" class="ilink">Before the Job</a></strong>.</li>
+<li>Typical install runs <strong>3–4 hours</strong>; we book with a couple days' notice.</li>
+<li>Pay, scheduling, and standards are in <strong><a href="#09-standards-and-working-with-us-md" class="ilink">Standards &amp; Working With Us</a></strong>.</li>
+</ul>
+<h2 id="questions-on-a-job">Questions on a job?</h2>
+<p>Call or text any time during an install — we'd rather answer a quick question than fix a callback.</p>
+<ul>
+<li><strong>Call/text:</strong> [OFFICE PHONE]</li>
+<li><strong>Email:</strong> [OFFICE EMAIL]</li>
+</ul>
+<p>Anywhere this guide says "call the office," it means this number.</p><div class="pn"><span></span><a class="pn-a next" href="#01-the-systems-md">The Systems You&#x27;ll Install →</a></div></article><article id="01-the-systems-md" class="doc"><h1 id="the-systems-youll-install">The Systems You'll Install</h1>
+<p>A plain-language tour of the whole-home water systems you'll be putting in — the parts, how water moves through them, and how the system types differ.</p>
+<p><strong>Read with your first job in mind.</strong> Almost every first job is the Standard city system — read that part closely; skim the well, H₂O₂, and salt-free types until a work order names one.</p>
+<blockquote>
+<p>📹 <strong>Video:</strong> Overview of the full system lineup and how each type fits a home — <strong><a href="https://www.loom.com/share/a35a9ff300a54346843f3127a88e5560" target="_blank" rel="noopener">watch it here</a></strong></p>
+</blockquote>
+<h2 id="what-a-whole-home-system-actually-is">What a whole-home system actually is</h2>
+<p>Two separate things go into most homes, and they do different jobs.</p>
+<ul>
+<li><strong>The whole-home unit</strong> sits at the main water line where water enters the house. It softens and filters everything going to every tap, shower, and appliance.</li>
+<li><strong>The under-sink RO</strong> is a small separate system at the kitchen sink. It polishes the drinking and cooking water further. It's its own install — see <a href="#05-ro-install-md" class="ilink">RO Install</a>.</li>
+</ul>
+<p><strong>Softener vs. filter — not the same thing</strong></p>
+<ul>
+<li>A <strong>softener</strong> removes hardness minerals (calcium and magnesium) and heavy metals through ion exchange with salt.</li>
+<li>A <strong>filter</strong> (the carbon in the tank, or the RO at the sink) removes chemicals, chlorine, contaminants, and odors.</li>
+</ul>
+<p>Our standard whole-home unit does <strong>both</strong> in one tank: one media tank, mixed bed, two jobs.</p>
+<h2 id="the-main-parts">The main parts</h2>
+<h3 id="the-control-valve-provalve">The control valve (ProValve)</h3>
+<p>The brain on top of the media tank — a ceramic-disc valve.</p>
+<ul>
+<li><strong>Demand regeneration:</strong> you program the home's hardness, and the valve counts gallons and regenerates based on actual usage — not a fixed timer. A max-days setting backstops low usage, so in practice it regenerates roughly monthly, at 2 a.m.</li>
+<li><strong>72-hour memory backup</strong> — a power blip won't wipe your programming.</li>
+<li><strong>Bypass included with every unit</strong> — it comes with the valve. Never order bypasses separately.</li>
+<li>Programming is covered in <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>. Here, just know it sits on top of the tank and controls flow and regeneration.</li>
+</ul>
+<h3 id="the-media-tank">The media tank</h3>
+<p>The fiberglass tank that holds all the filtering and softening media.</p>
+<ul>
+<li>NSF-certified fiberglass.</li>
+<li>Standard builds ship on a <strong>10"×54" or 12"×52"</strong> tank depending on configuration — <strong>check the work order</strong>. (The unit is still commonly called a "10×54.")</li>
+</ul>
+<h3 id="the-media-inside-the-tank">The media inside the tank</h3>
+<p>Three materials, layered — order matters. Tanks arrive pre-loaded from the factory; you never load media on site.</p>
+<ul>
+<li><strong>Carbon</strong> (Jacobi coconut-shell) sits on top. Water hits it first — it removes chlorine, chloramine, and chemicals, and protects the resin below. Activated grade on city water; catalytic grade on wells.</li>
+<li><strong>Softening resin</strong> (ResinTech CG10) sits below the carbon — the ion-exchange resin that removes hardness.</li>
+<li><strong>Gravel</strong> sits at the bottom — it supports the media bed and anchors the distributor tube.</li>
+</ul>
+<p>Why carbon goes above resin: chlorine breaks resin down fast. The carbon strips chlorine before the water ever touches the resin.</p>
+<h3 id="the-distributor-tube">The distributor tube</h3>
+<p>The center tube that runs down the middle of the media tank.</p>
+<ul>
+<li>The bottom looks like a pine cone with tiny holes, anchored by the gravel.</li>
+<li>It's a <strong>1.25" tube</strong> — part of how the system holds ~28 GPM with no pressure loss.</li>
+<li>This is the return path: treated water comes back up through it to head into the house.</li>
+</ul>
+<h3 id="the-brine-salt-tank">The brine (salt) tank</h3>
+<p>A separate tank that holds the salt, sitting next to the media tank — connected to the valve, but not the same vessel.</p>
+<ul>
+<li>The resin softens water by swapping hardness ions for sodium. When the resin is used up, the valve pulls brine from this tank to recharge it. That's regeneration.</li>
+<li>Dimensions vary by build — confirm with the office if you need to verify a delivery.</li>
+</ul>
+<h3 id="the-under-sink-ro-separate-system">The under-sink RO (separate system)</h3>
+<p>The drinking-water system at the kitchen sink. Its own install (<a href="#05-ro-install-md" class="ilink">RO Install</a>), not part of the tank.</p>
+<ul>
+<li>Two kinds: the <strong>tankless RO</strong> (HW800, 7-stage, compact, on-demand — <strong>needs electricity</strong>) and the <strong>tank RO</strong> (5-stage, small storage tank — works without electricity).</li>
+<li><strong>Alkaline remineralizer: tankless only.</strong> The tankless RO has it built in. The tank RO does not — it takes a separate external alkaline filter, which is leak-prone; that's why we prefer the built-in.</li>
+<li>Tankless RO waste ratio: <strong>2:1</strong>.</li>
+</ul>
+<h3 id="add-ons-youll-also-see">Add-ons you'll also see</h3>
+<p>Two add-ons show up on work orders — this is why the <a href="#02-before-the-job-md" class="ilink">Before the Job</a> kit list includes brass fittings.</p>
+<ul>
+<li><strong>UV purifier</strong> (wells): a stainless reactor on the main line that disinfects bacteria and viruses with UV light — no change to taste or odor. 120V (needs an outlet), 1" MNPT inlet/outlet.</li>
+<li><strong>Pre-system sediment filter:</strong> a <strong>5-micron, 20"×4.5"</strong> cartridge at the main entry — catches sand, silt, and rust before the tanks. Common on wells and older infrastructure; cartridge swaps roughly every 6 months.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> Labeled cross-section of the whole-home unit — valve on top, media tank with carbon over resin over gravel, distributor tube down the center, brine tank beside it, and the separate under-sink RO, with arrows showing the flow path — <em>coming soon</em></p>
+</blockquote>
+<h2 id="how-the-water-flows-through-it">How the water flows through it</h2>
+<p>Follow the water and the whole thing makes sense.</p>
+<ul>
+<li><strong>In:</strong> water enters the top of the media tank through the valve.</li>
+<li><strong>Down through carbon:</strong> chlorine and chemicals come out first, protecting the resin below.</li>
+<li><strong>Down through resin:</strong> ion exchange pulls out the hardness.</li>
+<li><strong>Through the gravel and up the center tube:</strong> water reaches the bottom, passes through the gravel, and travels back up the distributor tube.</li>
+<li><strong>Out to the house:</strong> soft, filtered water heads to every tap.</li>
+<li><strong>Drinking water:</strong> the kitchen tap gets a final polish at the separate under-sink RO.</li>
+</ul>
+<p>Short version: in the top, down through carbon then resin, up the center tube, out to the house — drinking water finished at the RO.</p>
+<h2 id="the-system-types-youll-encounter">The system types you'll encounter</h2>
+<p>Most installs are the standard city setup, but you'll see all of these.</p>
+<h3 id="standard-whole-home-ro-city">Standard whole-home + RO (city)</h3>
+<p>The most common install by far.</p>
+<ul>
+<li>One media tank (softener + filter combined), a brine tank, and the under-sink tankless RO for drinking water.</li>
+<li>Rated <strong>48,000 grains</strong>, roughly <strong>28 GPM</strong>. The capacity you program at the valve is a lower regen setpoint — use <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>'s settings table, never the rated number.</li>
+<li>Fits a standard city home — up to about 6 people, 4 bathrooms or fewer.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> Deep dive on the standard whole-home unit and how it's built — <strong><a href="https://www.loom.com/share/34846b502db74cb685ccd2b6174d5628" target="_blank" rel="noopener">watch it here</a></strong></p>
+</blockquote>
+<h3 id="xl">XL</h3>
+<p>The standard, sized up.</p>
+<ul>
+<li>Rated <strong>64,000 grains</strong>, on a <strong>12"×52"</strong> media tank.</li>
+<li>For larger homes — over ~4,000 sqft or ~6+ people.</li>
+</ul>
+<h3 id="dual-tank-city">Dual-Tank City</h3>
+<p>A premium two-tank version for city water.</p>
+<ul>
+<li>Carbon and softening resin live in <strong>separate tanks</strong> — the carbon tank is a <strong>10"×60"</strong>.</li>
+<li>Both tanks self-clean (backwash) off one smart valve; the carbon tank uses a simple pass-through valve rather than a second electronic one.</li>
+<li>Rated <strong>96,000 grains total</strong> (48k resin + 48k carbon).</li>
+<li>The resin never sees chlorinated water, so both medias last much longer than in a single tank.</li>
+</ul>
+<h3 id="well-iron-sulfur">Well / Iron &amp; Sulfur</h3>
+<p>Well water needs different media — and above 7 ppm iron, a different system entirely.</p>
+<ul>
+<li><strong>Dual-Tank Well:</strong> for wells. Adds <strong>Katalox Light</strong> media (removes iron, boosts pH, self-cleans) and <strong>catalytic</strong> coconut carbon, running an air-oxidation (AIO) valve. Handles iron <strong>up to 7 ppm</strong>.</li>
+<li><strong>Iron &amp; Sulfur (H₂O₂):</strong> for wells with iron <strong>over 7 ppm</strong> or a sulfur / rotten-egg smell. Adds a hydrogen-peroxide injection panel and holding tank ahead of the tanks — the peroxide rusts the iron so the carbon can filter it out, and off-gasses the sulfur. Runs <strong>dual valves</strong> that stagger regeneration so one brine tank isn't asked to recharge both at once.</li>
+</ul>
+<h3 id="salt-free">Salt-Free</h3>
+<p>A conditioner, not a softener — important distinction.</p>
+<ul>
+<li><strong>No brine tank, no salt, no drain, no valve, no electricity.</strong></li>
+<li>It <strong>conditions</strong> the water to prevent scale but does <strong>not remove hardness</strong> — 10 GPG in is 10 GPG out. For customers who want a soft feel with no upkeep.</li>
+<li>Not recommended for well water.</li>
+</ul>
+<h2 id="key-numbers-to-remember">Key numbers to remember</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard media tank</td>
+<td>10"×54" or 12"×52" depending on configuration — check the work order</td>
+</tr>
+<tr>
+<td>Carbon tank (dual-tank builds)</td>
+<td>10"×60"</td>
+</tr>
+<tr>
+<td>Distributor tube</td>
+<td>1.25"</td>
+</tr>
+<tr>
+<td>Main water line</td>
+<td>1" through the whole path</td>
+</tr>
+<tr>
+<td>Standard flow rate</td>
+<td>~28 GPM</td>
+</tr>
+<tr>
+<td>Rated capacity</td>
+<td>48,000 gr standard · 64,000 gr XL · 96,000 gr dual (48k resin + 48k carbon) — program per <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>'s table, never the rated number</td>
+</tr>
+<tr>
+<td>RO waste ratio (tankless)</td>
+<td>2:1</td>
+</tr>
+<tr>
+<td>Pre-sediment filter</td>
+<td>5-micron, 20"×4.5"</td>
+</tr>
+<tr>
+<td>UV purifier</td>
+<td>120V, 1" MNPT in/out</td>
+</tr>
+<tr>
+<td>Well iron cutoff</td>
+<td>7 ppm — under it, Dual-Tank Well; over it, Iron &amp; Sulfur (H₂O₂)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Related:</strong> <a href="#02-before-the-job-md" class="ilink">Before the Job</a> · <a href="#04-valve-programming-md" class="ilink">Valve Programming</a> · <a href="#05-ro-install-md" class="ilink">RO Install</a></p><div class="pn"><a class="pn-a" href="#00-start-here-md">← Start Here — Installer Onboarding</a><a class="pn-a next" href="#02-before-the-job-md">Before the Job — Prep &amp; What to Bring →</a></div></article><article id="02-before-the-job-md" class="doc"><h1 id="before-the-job-prep-what-to-bring">Before the Job — Prep &amp; What to Bring</h1>
+<p>Everything that happens before you cut a single pipe: how the equipment reaches you, what to carry, what every site needs, and the install types you'll run into. This section owns the packing list — when any other section mentions parts or tools, this is the list it means.</p>
+<h2 id="who-provides-what">Who provides what</h2>
+<p>We hand you the equipment. You bring the trade skills, your own tools, and the raw install materials to tie it in.</p>
+<p><strong>We provide (per job):</strong></p>
+<ul>
+<li>The whole-home softener — control valve, media tank, brine tank.</li>
+<li>The under-sink RO drinking system — filter bank and faucet.</li>
+<li>The small parts — brine-tank clip, O-rings, basket, overflow fitting, and the <strong>flow restrictor gasket</strong> (comes in the white box).</li>
+<li>One 40 lb bag of softener salt — <strong>pour it into the brine tank at handoff and leave the empty bag</strong> so the customer knows what to buy.</li>
+</ul>
+<p><span class="warn">!</span> <strong>The flow restrictor is a must-install, not a spare.</strong> The donut-shaped rubber gasket goes on the <strong>drain line</strong> and limits regeneration waste to 50–60 gallons — skip it and every regen wastes hundreds of gallons. The install step is in <a href="#03-field-sop-md" class="ilink">The Install SOP</a>'s drain phase.</p>
+<p><strong>You bring (your tools):</strong></p>
+<ul>
+<li>Sawzall — cuts the wall opening when there's a board behind the sheetrock.</li>
+<li>Drywall saw — for a clean sheetrock-only cut.</li>
+<li>Milwaukee reamer — deburrs cut pipe ends.</li>
+<li>Crimper — for the fittings.</li>
+<li>Diamond drill bit — <strong>1/2" or 5/8"</strong> — for drilling the countertop (granite/quartz) for the RO faucet hole. Which size our faucet shank needs: confirm with the office before your first RO job.</li>
+</ul>
+<p><strong>You supply (install materials):</strong></p>
+<ul>
+<li>Pipe — including <strong>curved "road" pipe</strong> for gentle bends off the valve.</li>
+<li><strong>3/8" lines.</strong></li>
+<li><strong>CPVC</strong> for the drain run (rated for pressure and hot water).</li>
+<li>Fittings, 90s, and rings.</li>
+<li>Saddle valve / clamp.</li>
+<li>Thread tape (Blue Monster) and pipe dope.</li>
+<li>Brass fittings if the work order includes a UV purifier or pre-sediment filter (see the add-ons in <a href="#01-the-systems-md" class="ilink">The Systems</a>).</li>
+</ul>
+<p>Sizes and quantities: confirm your standard kit with the office on your first pickup — don't guess at diameters or counts.</p>
+<p><strong>Test kit:</strong> final verification (<a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a>) needs a hardness drop test, a chlorine test, and a TDS meter. Who supplies the kit and who replaces used reagents: confirm with the office.</p>
+<h2 id="getting-the-equipment">Getting the equipment</h2>
+<ul>
+<li>Systems and equipment are <strong>picked up at our warehouse</strong> — the location is on the work order.</li>
+<li>If anything ships freight instead: <strong>inspect the pallet, photograph all sides, and document any damage BEFORE anyone signs</strong> — you or the homeowner. A signed-for damaged tank is an unclaimable damaged tank.</li>
+</ul>
+<p>The work order also carries the system configuration and the home's tested hardness (GPG). If either is missing, call the office before job day.</p>
+<h3 id="verify-before-you-leave-the-truck">Verify before you leave the truck</h3>
+<p>Confirm you have <strong>every part and every tool</strong> before you start — check it yourself, don't assume the warehouse packed it right. Finishing details eat the most time on a job, so keep extras of everything on the truck. A missing clip or fitting kills an install mid-job.</p>
+<h2 id="the-3-things-every-install-needs">The 3 things every install needs</h2>
+<p>A site is installable when all three are accessible. If any one is missing or unreachable, the job changes — or it's not a job yet.</p>
+<ul>
+<li><strong>Main water line</strong> — to tie the system into.</li>
+<li><strong>Drain</strong> — to carry water out during regeneration.</li>
+<li><strong>Power source</strong> — a standard outlet.</li>
+</ul>
+<p><span class="warn">!</span> <strong>Septic (well/country homes):</strong> never route the regen drain into a septic tank — the salty regen water kills the tank's bacteria. Run it outside instead, about 3 ft underground in a flowerbed. If a septic customer asks about drain routing beyond that, call the office — don't freelance local discharge rules.</p>
+<p>If all three are accessible, it's installable. The install <em>type</em> comes down to where the main line is exposed.</p>
+<h2 id="locating-the-main-line-and-shut-off-valve">Locating the main line and shut-off valve</h2>
+<p>Where the shut-off valve sits determines the install type, so pin it down first — ideally before you're on site.</p>
+<p>The main is only ever in about three places:</p>
+<ul>
+<li><strong>Garage / indoor</strong> — on the wall, by the softener loop, or behind an access panel.</li>
+<li><strong>Flowerbed / yard</strong> — in an in-ground box.</li>
+<li><strong>City / street</strong> — in the meter box at the curb.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> common main-line / shut-off locations — garage wall vs. flowerbed box vs. street meter box — <em>coming soon</em></p>
+</blockquote>
+<h3 id="what-youll-actually-find">What you'll actually find</h3>
+<ul>
+<li><strong>New builds</strong> — the shut-off valve is usually in the <strong>garage</strong> or the <strong>laundry room</strong>.</li>
+<li><strong>Older homes</strong> — probably no dedicated loop at all; at best a bare <strong>shut-off valve in the garage</strong>. <strong>Watch for galvanized pipe</strong> — soft water leaches metal off it. Flag it to the customer and recommend a repipe where feasible.</li>
+<li><strong>A dedicated softener loop is the exception, not the rule</strong> — most homes don't have one unless it was built in when the house went up. Don't assume a clean garage loop is waiting for you.</li>
+</ul>
+<h3 id="reading-the-training-photos">Reading the training photos</h3>
+<p>In the install-module photos, the water loop / shut-off valve is at the <strong>top</strong> of the frame. Look there first when matching a real site to a training example.</p>
+<h3 id="on-site">On site</h3>
+<p>Locate the main water shut-off — typically behind the access panel — and check the <strong>pipe size</strong> before you plan anything. Then reach into the wall cavity by hand: feel where the line tees off to the water heater and feel the wall material. That one move tells you the line location, the tee location, and whether there's a board behind the sheetrock — all before you cut a single hole.</p>
+<p>That tee is the job's most important landmark: <strong>you tie into the main upstream of it — the full Golden Rule opens <a href="#03-field-sop-md" class="ilink">The Install SOP</a>.</strong></p>
+<h2 id="install-type-variations-youll-see">Install-type variations you'll see</h2>
+<p>The type is set by where the main line is exposed. Know these before you quote or walk in.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>When the main line is…</th>
+<th>What we do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Basement install</strong></td>
+<td>exposed in the basement</td>
+<td>Tie in at the exposed basement line.</td>
+</tr>
+<tr>
+<td><strong>Garage shut-off / loop</strong></td>
+<td>exposed in the garage</td>
+<td>Tie in at the garage loop — the standard, cleanest install.</td>
+</tr>
+<tr>
+<td><strong>Attic tie</strong></td>
+<td>exposed in the attic above the garage</td>
+<td>Cut the line in the attic and route it down into the garage.</td>
+</tr>
+<tr>
+<td><strong>Side of house</strong></td>
+<td>exposed on the side of the home</td>
+<td>Cut the line and place the system on the side of the house.</td>
+</tr>
+<tr>
+<td><strong>Side entry</strong></td>
+<td>in the flowerbed or yard</td>
+<td>Trench from the main to the garage.</td>
+</tr>
+<tr>
+<td><strong>Bury</strong></td>
+<td>no interior access</td>
+<td>Bury the system outside; place a hollow faux rock over it, and keep the valve exposed.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Anything other than a garage or basement tie-in: call the office before job day.</strong> Outdoor, trenching, and bury jobs carry extra fees and need up-front photos so the job is quoted right — don't learn a variant on the customer's clock.</p>
+<h3 id="softener-loop-vs-no-loop">Softener loop vs. no loop</h3>
+<ul>
+<li><strong>Loop present</strong> — a garage loop is the cleanest tie-in. Treat it as the exception, not the default.</li>
+<li><strong>No loop</strong> — most jobs. You're tying into a bare shut-off valve, often in the garage. Plan the tie-in and drain run yourself.</li>
+</ul>
+<h3 id="notes-on-the-outdoor-types">Notes on the outdoor types</h3>
+<ul>
+<li><strong>Side entry</strong> — trench from the main to the garage. If a large sidewalk or driveway sits between the main and the garage, that route isn't possible: trench to the side of the house instead, or trench to bury the system.</li>
+<li><strong>Bury</strong> — the valve and fiberglass tank are fine outside with no cover needed; the faux rock protects from the elements. Keep the valve exposed for service.</li>
+<li><strong>Hard freeze (outdoor units)</strong> — tell the customer to drip a faucet until it passes.</li>
+<li>Outdoor, trenching, and bury installs carry extra fees and need photos collected up front so the job is quoted right.</li>
+</ul>
+<hr />
+<p><strong>Related:</strong> <a href="#01-the-systems-md" class="ilink">The Systems</a>, <a href="#03-field-sop-md" class="ilink">The Install SOP</a>, <a href="#04-valve-programming-md" class="ilink">Valve Programming</a></p><div class="pn"><a class="pn-a" href="#01-the-systems-md">← The Systems You&#x27;ll Install</a><a class="pn-a next" href="#03-field-sop-md">The Install — Step-by-Step (Field SO… →</a></div></article><article id="03-field-sop-md" class="doc"><h1 id="the-install-step-by-step-field-sop">The Install — Step-by-Step (Field SOP)</h1>
+<p>This is our core install sequence for the whole-home softener: ten phases, run in order, every job. By the end of this section the system is fully plumbed and mounted, the bypass is in BYPASS, and the main water is back on. Programming (<a href="#04-valve-programming-md" class="ilink">Valve Programming</a>) and startup (<a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a>) come after — nothing regenerates in this section.</p>
+<h2 id="before-you-touch-a-wrench-the-golden-rule">Before You Touch a Wrench: The Golden Rule</h2>
+<p>Everything downstream depends on where you tie into the main. Get this wrong and the job fails no matter how clean the rest of your work is.</p>
+<p><strong>🥇 GOLDEN RULE — Tie into the main BEFORE the line tees off to the water heater.</strong></p>
+<ul>
+<li>Tie in <strong>before</strong> the water-heater tee → you treat <strong>both hot and cold</strong>.</li>
+<li>Tie in <strong>after</strong> the tee → you treat <strong>cold only</strong> — the water heater keeps getting hard water.</li>
+</ul>
+<p>Find the tee before you cut anything, and make sure your tie-in sits upstream of it.</p>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> the main line entering the house, the tee splitting off to the water heater, and the correct tie-in point marked upstream of that tee — <em>coming soon</em></p>
+</blockquote>
+<h2 id="the-water-sequence-off-bypass-back-on">The Water Sequence — Off, Bypass, Back On</h2>
+<p>The whole section runs on one water sequence. Know it before Phase 1:</p>
+<ul>
+<li>The <strong>main goes OFF</strong> before you cut into the line — you locate the shutoff in Phase 1.</li>
+<li>The unit is plumbed in with the <strong>bypass valve in BYPASS</strong>.</li>
+<li>Once your tie-in is complete and the joints are checked, the <strong>main goes back ON</strong> — in bypass, the house gets full city water at full pressure, just unsoftened, so the customer isn't without water while you finish.</li>
+<li>Eyeball the tie-in joints as pressure returns — re-checking your own joints is what keeps you off return calls.</li>
+<li>The system <strong>stays in bypass until <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a> startup</strong>. The bypass is fully open or fully closed, never in between — it controls pressure, not softness.</li>
+<li><strong>Never run a cycle in this section.</strong> The first regeneration happens in <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a>, after the valve is programmed in <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>.</li>
+</ul>
+<h2 id="the-tanks-arrive-ready">The Tanks Arrive Ready</h2>
+<ul>
+<li>Every tank is <strong>assembled and media-loaded at our factory in Fort Worth</strong>. There is no on-site media loading — ever. If a tank arrives looking unloaded or damaged, stop and call the office.</li>
+<li>Whether the brine tank takes an initial water fill before the first cycle isn't covered here — <strong>confirm with the office</strong> before your first job.</li>
+</ul>
+<hr />
+<h2 id="phase-1-job-setup-wall-assessment">Phase 1 — Job Setup &amp; Wall Assessment</h2>
+<p>Set yourself up so nothing stops the job halfway through, and learn the wall before you cut it.</p>
+<h3 id="confirm-parts-and-tools-first">Confirm parts and tools first</h3>
+<ul>
+<li>Check that you personally have <strong>every part and tool</strong> before starting.</li>
+<li>Don't trust the warehouse pull — verify it yourself.</li>
+</ul>
+<h3 id="find-the-main-and-read-the-pipe">Find the main and read the pipe</h3>
+<ul>
+<li>Locate the <strong>main water shutoff</strong>, typically behind the access panel — this is what you close before cutting in.</li>
+<li>Check the <strong>pipe size</strong> so you know what you're tying into.</li>
+<li>Plumbing type is usually <strong>PEX</strong>. If the main is copper or galvanized, <strong>call the office before you cut</strong> — the tie-in method below assumes PEX.</li>
+<li>Clear the work area and set up a flat staging surface in the garage.</li>
+</ul>
+<h3 id="reach-into-the-wall-by-hand">Reach into the wall by hand</h3>
+<p>Before any cutting, reach into the wall cavity by hand and confirm three things:</p>
+<ul>
+<li>Where the line <strong>tees off to the water heater</strong> — so you honor the Golden Rule.</li>
+<li>The <strong>wall material</strong> — a board behind the sheetrock means you'll need a <strong>Sawzall</strong>, not just a drywall saw.</li>
+<li>The <strong>plumbing type</strong>.</li>
+</ul>
+<p>Line location, tee location, and wall material — all known before you make a single hole. No surprises mid-cut.</p>
+<hr />
+<h2 id="phase-2-plan-the-drain">Phase 2 — Plan the Drain</h2>
+<p>Decide where the softener drains and how you'll run the pipe before you start fitting anything.</p>
+<h3 id="where-to-tie-the-drain">Where to tie the drain</h3>
+<ul>
+<li>Tie into the water heater's <strong>TPR (temperature/pressure relief) drain</strong> — that's our standard.</li>
+<li><strong>If your local code doesn't allow tying into the TPR discharge, stop and call the office before improvising.</strong></li>
+<li>Know the pressure difference: the <strong>TPR drain is pressurized</strong>; the <strong>softener system is not</strong> (it runs on its own pressure only).</li>
+<li>Use <strong>CPVC</strong> for the drain run — it's rated for both pressure and hot water.</li>
+</ul>
+<h3 id="fitting-philosophy">Fitting philosophy</h3>
+<ul>
+<li>Use the <strong>fewest fittings possible</strong> — every fitting is a potential leak point.</li>
+<li>Favor <strong>vertical over horizontal</strong>. If a fitting ages out, gravity helps you rather than working against you. Horizontal is acceptable, not ideal.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> the softener drain routed to the water-heater TPR drain — clean vertical run with minimal fittings vs. a messy horizontal run — <em>coming soon</em></p>
+</blockquote>
+<hr />
+<h2 id="phase-3-assemble-the-control-head-bypass">Phase 3 — Assemble the Control Head &amp; Bypass</h2>
+<p>Build up the control head with the small parts that cause guaranteed callbacks if they're missed.</p>
+<h3 id="the-components">The components</h3>
+<ul>
+<li>Bypass valve, control valve, head, and tails.</li>
+</ul>
+<h3 id="the-two-parts-you-cannot-skip">The two parts you cannot skip</h3>
+<ul>
+<li><strong>Seat the bottom O-ring</strong> — mandatory. Miss it and it leaks 100% of the time.</li>
+<li>Install the <strong>brine-tank clip</strong> that secures the tube — miss it and the line leaks and pops off, which means a callback.</li>
+</ul>
+<p>Keep the clip and other small parts in a side pocket so they don't get lost on the job.</p>
+<h3 id="basket-and-fittings">Basket and fittings</h3>
+<ul>
+<li>Install the <strong>basket</strong>: line up the four grooves until it clicks.</li>
+<li><strong>Seat every fitting fully</strong> — lube if you have it, push until it pops, then turn with real muscle.</li>
+<li>Verify tightness and re-seat anything that feels loose.</li>
+</ul>
+<hr />
+<h2 id="phase-4-saddle-valve-flow-components">Phase 4 — Saddle Valve &amp; Flow Components</h2>
+<p>Set the flow components and check that nothing is pinched before you move on.</p>
+<ul>
+<li>Install the <strong>saddle valve/clamp</strong> and tighten it.</li>
+<li>Inspect every ring and fitting — nothing pinched, popping out, or misaligned. A <strong>pinched ring will work its way out and leak</strong>.</li>
+<li><strong>Flow meter orientation:</strong> long side <strong>IN</strong>, and the <strong>arrows point IN</strong>.</li>
+<li>If it's unclear which line the saddle valve or flow meter goes on for your build, <strong>call the office — don't guess</strong>.</li>
+</ul>
+<hr />
+<h2 id="phase-5-drain-threading-flow-restrictor">Phase 5 — Drain Threading &amp; Flow Restrictor</h2>
+<p>Seal the drain threads and install the one part that saves hundreds of gallons per regen.</p>
+<h3 id="thread-sealing">Thread sealing</h3>
+<ul>
+<li>Apply <strong>thread tape plus pipe dope</strong> to the drain threads. Not strictly required since the drain isn't pressurized — but better safe.</li>
+<li><strong>Blue Monster tape technique:</strong> wrap the threads, then run your fingers over them and twirl. When the lines darken, the tape has caught.</li>
+</ul>
+<h3 id="install-the-flow-restrictor-non-negotiable">Install the flow restrictor — non-negotiable</h3>
+<ul>
+<li>The flow restrictor is the <strong>donut-shaped rubber gasket in the white box</strong>. It installs on the <strong>drain line</strong>.</li>
+<li>It limits regeneration waste to <strong>50–60 gallons</strong>. Skip it and <strong>every regen wastes hundreds of gallons</strong>.</li>
+<li>Exact port and orientation unclear on your build? <strong>Confirm with the office</strong> before connecting the drain.</li>
+</ul>
+<hr />
+<h2 id="phase-6-mount-the-wall-plate-cut-the-hole">Phase 6 — Mount the Wall Plate &amp; Cut the Hole</h2>
+<p>Use the plate's own guide to mark the opening, then cut with the right tool for the wall.</p>
+<ul>
+<li>Use the wall plate's <strong>built-in measuring guide</strong> — fold it in and hold it in place.</li>
+<li>Mark the <strong>four corners only</strong>. Don't draw a full outline.</li>
+<li>Cut the opening. Reach for the <strong>Sawzall</strong> if you felt a board back in Phase 1.</li>
+</ul>
+<hr />
+<h2 id="phase-7-route-the-softener-drain-line">Phase 7 — Route the Softener Drain Line</h2>
+<p>Run the softener drain out of the house the same way the water heater drains.</p>
+<ul>
+<li>Run the softener drain along the wall behind the water heater and out, draining back to the city — just like the heater does.</li>
+<li><span class="warn">!</span> <strong>Septic home?</strong> Never route the regen drain into the septic tank — see the septic rule in <a href="#02-before-the-job-md" class="ilink">Before the Job</a> (run it outside, ~3 ft underground in a flowerbed).</li>
+<li><strong>Minimize fittings.</strong></li>
+<li>Finish the pipe end with a <strong>90 + ring</strong> every time. You'll need a 90 regardless of which direction you're heading.</li>
+</ul>
+<hr />
+<h2 id="phase-8-shape-fit-the-pipe">Phase 8 — Shape &amp; Fit the Pipe</h2>
+<p>Shape the pipe to fit without disturbing the ring that holds everything in place.</p>
+<h3 id="watch-the-ring"><span class="warn">!</span> Watch the ring</h3>
+<ul>
+<li>Fittings rubbing against the ring <strong>push the clip out</strong>. Don't force a fitting against it.</li>
+</ul>
+<h3 id="shaping-the-pipe">Shaping the pipe</h3>
+<ul>
+<li>Use <strong>curved "road" pipe</strong> — add only a gentle curve, never a hard bend.</li>
+<li><strong>Ream</strong> the cut ends with a <strong>Milwaukee reamer</strong> for clean, burr-free holes.</li>
+</ul>
+<hr />
+<h2 id="phase-9-crimp-mount-the-plate">Phase 9 — Crimp &amp; Mount the Plate</h2>
+<p>Crimp the fittings and screw the plate down so it's solid.</p>
+<h3 id="crimping">Crimping</h3>
+<ul>
+<li>Crimp the fittings, keeping them <strong>turned to the side</strong> — they rotate, which gives you room for the initial crimp.</li>
+<li><strong>Pre-position the fittings</strong> before you measure the plate dots.</li>
+<li>Ring sizes and crimp-tool spec for our standard build: <strong>confirm with the office</strong> before your first job.</li>
+</ul>
+<h3 id="mounting-the-plate">Mounting the plate</h3>
+<ul>
+<li><strong>Mount the plate with screws</strong> — more secure than the clips alone.</li>
+<li><strong>Skip the bottom two screws</strong> — the pipe holds that side.</li>
+<li>Match everything by eye; this is where experience shows.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> the finished wall plate mounted with screws (bottom two omitted), the bypass valve labeled arrow-in / arrow-out, and the crimped fittings turned to the side — <em>coming soon</em></p>
+</blockquote>
+<hr />
+<h2 id="phase-10-brine-tank-assembly">Phase 10 — Brine Tank Assembly</h2>
+<p>Build the brine tank and lock it down. Getting the air out and confirming the connection here is what keeps water off the floor.</p>
+<h3 id="bleed-and-seat">Bleed and seat</h3>
+<ul>
+<li><strong>Bleed all air</strong> before pressurizing — trapped air leads to leaks. If the bleed point on your build isn't obvious, call the office.</li>
+</ul>
+<h3 id="overflow-and-anchoring">Overflow and anchoring</h3>
+<ul>
+<li>Install the <strong>overflow fitting</strong> to handle any overfill. Rubber-side orientation is your preference — just get it tight.</li>
+<li><strong>Strap the tower to the ground.</strong> Which piece is the tower on your build, or the anchoring method unclear? Confirm with the office.</li>
+<li><strong>Leave a little space between the plug and the unit.</strong> If it's not clear which plug on your build, ask on your shadow install or call the office.</li>
+</ul>
+<h3 id="before-you-ever-run-a-cycle"><span class="warn">!</span> Before you ever run a cycle</h3>
+<ul>
+<li><strong>Confirm the brine tank is connected.</strong> Running the system to zero with no brine tank connected shoots water straight out the open port. (No cycles run in this section anyway — the first regen is <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a>.)</li>
+</ul>
+<h3 id="finishing-touches">Finishing touches</h3>
+<ul>
+<li>Leave joints <strong>"a little flat"</strong> rather than over-cranking. Firm hand-tight is enough.</li>
+<li>The system <strong>clock</strong> gets set during valve programming — see <strong><a href="#04-valve-programming-md" class="ilink">Valve Programming</a></strong>.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> the finished brine-tank build — overflow fitting, strap anchoring, and the brine-line connection at the control head — <em>coming soon</em></p>
+</blockquote>
+<hr />
+<h2 id="where-this-leaves-you">Where This Leaves You</h2>
+<p>At the end of Phase 10:</p>
+<ul>
+<li>The softener is fully plumbed and mounted, and the brine tank is built and connected.</li>
+<li>The <strong>bypass is in BYPASS</strong> and the <strong>main water is back ON</strong> — the house has full-pressure, unsoftened city water.</li>
+<li>No cycle has run and nothing is programmed yet.</li>
+</ul>
+<p>Next, in order:</p>
+<ul>
+<li><strong><a href="#04-valve-programming-md" class="ilink">Valve Programming</a></strong> — set the clock and program the valve with the tested hardness from the work order.</li>
+<li><strong><a href="#05-ro-install-md" class="ilink">RO Install</a></strong> — if the job includes the under-sink RO.</li>
+<li><strong><a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a></strong> — open the bypass to service, run the mandatory first regeneration, leak-check, and test.</li>
+<li><strong><a href="#07-customer-handoff-md" class="ilink">Customer Handoff</a></strong> — walk the customer through it.</li>
+</ul>
+<p>Don't open the bypass to service, run a regen, or hand off until you've worked those sections.</p>
+<p><strong>Related:</strong> <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>, <a href="#05-ro-install-md" class="ilink">RO Install</a>, <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a></p><div class="pn"><a class="pn-a" href="#02-before-the-job-md">← Before the Job — Prep &amp; What to Bring</a><a class="pn-a next" href="#04-valve-programming-md">Valve Programming →</a></div></article><article id="04-valve-programming-md" class="doc"><h1 id="valve-programming">Valve Programming</h1>
+<p>The physical install is done: the system is plumbed in, sitting in bypass, and the main water is back on (<a href="#03-field-sop-md" class="ilink">The Install SOP</a>). Now program the control valve (the ProValve) so the softener knows how big it is, how hard the water is, and when to clean itself. This section is programming only — the first regeneration is a startup step, covered in <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a>.</p>
+<blockquote>
+<p>📹 <strong>Video:</strong> Full valve-programming walkthrough on first power-up, showing each menu screen — <strong><a href="https://drive.google.com/file/d/1_020lJIlw4xzRyS9Yj_ewfSzLerS1i8K/view" target="_blank" rel="noopener">watch it here</a></strong></p>
+</blockquote>
+<h2 id="before-you-start">Before You Start</h2>
+<p>The valve does the work automatically once it's set. Your job here is to enter the right numbers.</p>
+<p>Three things to know going in:</p>
+<ul>
+<li>The valve runs <strong>demand regeneration</strong> — programmed with the home's hardness, it counts gallons and regenerates based on actual usage, not a fixed schedule.</li>
+<li>You set the <strong>regeneration time to 2:00 a.m.</strong> and a <strong>max-days backstop</strong> so it self-cleans even in a low-usage home. Net effect: roughly one regen a month, at 2 a.m., in normal use.</li>
+<li>The single most important number is <strong>water hardness</strong>, and it comes off the <strong>work order</strong> — the office tested the home's water and put the GPG on your paperwork. Get it wrong and you get hard-water breakthrough and a callback.</li>
+</ul>
+<h2 id="settings-by-tank-type">Settings by Tank Type</h2>
+<p>Enter these values based on the tank you installed.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Standard</th>
+<th>XL</th>
+<th>Dual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capacity</td>
+<td>36,000 grains</td>
+<td>42,000 grains</td>
+<td>48,000 grains</td>
+</tr>
+<tr>
+<td>Primary backwash</td>
+<td>6 min</td>
+<td>10 min</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Secondary backwash</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Regeneration time</td>
+<td>2:00 a.m.</td>
+<td>2:00 a.m.</td>
+<td>2:00 a.m.</td>
+</tr>
+<tr>
+<td>Max days for regen</td>
+<td>28</td>
+<td>28</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Water hardness</td>
+<td>Tested GPG (work order)</td>
+<td>Tested GPG (work order)</td>
+<td>Tested GPG (work order)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>On the capacity figures</strong></p>
+<ul>
+<li>These are <strong>programmed regeneration setpoints</strong>, set conservatively so the system regenerates in time.</li>
+<li>They are <strong>not</strong> the tank's rated capacity — Standard is rated 48,000 grains, XL 64,000, Dual 96,000 total. Never program the rating.</li>
+</ul>
+<p><strong>On secondary backwash</strong></p>
+<ul>
+<li>Always 3, on every system, regardless of tank type.</li>
+<li>The settings sheet doesn't state the unit — confirm with the office rather than assuming minutes.</li>
+</ul>
+<p><strong>On max days for regen</strong></p>
+<ul>
+<li>28 is the default and works for most installs.</li>
+<li>Tune it by hardness: above 30 GPG, drop it to around 14 days; below 25 GPG, keep it at 28.</li>
+</ul>
+<p><strong>On water hardness — never leave the factory default of 10</strong></p>
+<ul>
+<li>Program the <strong>tested GPG from the work order</strong>.</li>
+<li>The factory 10 is a Dallas-area habit (DFW rarely tops 10–12 GPG). Iowa and Illinois water routinely runs 15–40+ GPG — an undersized setting under-regenerates, and the customer gets hard water back.</li>
+<li>Work order missing the number? Run the hardness test on site or pull the local water company's report; if neither is possible, call the office. Do not guess, and do not leave it at 10.</li>
+</ul>
+<h2 id="programming-steps">Programming Steps</h2>
+<p>The menu screens follow one another — enter a value, press down, move to the next. One menu note: the hardness screen sits just under Capacity, so it may come up earlier in your walk-through than this list shows. Set each value when its screen appears; what matters is that everything in step 11 is set before you leave the menu.</p>
+<p><strong>1. Power on</strong></p>
+<ul>
+<li>The valve boots to the main screen.</li>
+</ul>
+<p><strong>2. Open the menu</strong></p>
+<ul>
+<li>Press the first button (Menu).</li>
+</ul>
+<p><strong>3. Set the time — one minute ahead</strong></p>
+<ul>
+<li>Set the clock one minute ahead of the actual time. Shop habit, every install.</li>
+</ul>
+<p><strong>4. Set the date</strong></p>
+<p><strong>5. Set the capacity</strong></p>
+<ul>
+<li>Standard 36,000 / XL 42,000 / Dual 48,000 grains.</li>
+<li>Press down to continue.</li>
+</ul>
+<p><strong>6. Set the primary backwash time</strong></p>
+<ul>
+<li>Standard: 6 minutes.</li>
+<li>XL and Dual: 10 minutes.</li>
+</ul>
+<p><strong>7. Set the secondary backwash</strong></p>
+<ul>
+<li>Always 3, on every system.</li>
+</ul>
+<p><strong>8. Set the regeneration time</strong></p>
+<ul>
+<li>2:00 a.m.</li>
+</ul>
+<p><strong>9. Set the max days for regen</strong></p>
+<ul>
+<li>Default 28.</li>
+<li>Adjust by hardness if needed (see the settings table above).</li>
+</ul>
+<p><strong>10. Set the water hardness</strong></p>
+<ul>
+<li>Enter the tested GPG from the work order. Never leave it at 10.</li>
+</ul>
+<p><strong>11. Confirm your entries</strong></p>
+<ul>
+<li>You should now have set: time, date, capacity, primary backwash, secondary backwash, regeneration time (2:00 a.m.), max days for regen, and water hardness.</li>
+</ul>
+<p><strong>12. Stop — do not start the regen from here</strong></p>
+<ul>
+<li>Backing all the way out of the menu (two presses of Back) launches a regeneration.</li>
+<li>The first regeneration is a startup step with its own bypass sequence — run it with <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a> in front of you.</li>
+</ul>
+<h2 id="well-water-dual-tank-valve-downflow-air-injection">Well-Water Dual-Tank Valve (Downflow / Air Injection)</h2>
+<p>Well-water dual-tank systems use a <strong>different valve</strong> on the first tank than the city units do, even though the tank looks the same. Get this right at unboxing.</p>
+<p><strong>What's different</strong></p>
+<ul>
+<li>The Katalox Light tank — the first tank, on the right — takes a <strong>downflow valve programmed for air injection</strong>.</li>
+<li>It injects oxygen into the tank, turning dissolved iron into rust so it can be filtered out.</li>
+</ul>
+<p><strong>How to identify it</strong></p>
+<ul>
+<li>The correct valve is labeled differently — look for "well water," "downflow," or "Katalox valve."</li>
+<li>Verify the correct valve is on the correct tank before you start.</li>
+</ul>
+<p><strong>If you're not sure</strong></p>
+<ul>
+<li>The right downflow valve ships with these orders, so the parts on the truck should be correct.</li>
+<li>Not 100% certain which valve goes where? Stop and call the office before you install — contact info is in the <a href="#00-start-here-md" class="ilink">Start Here</a> contact block; support is available 7 days a week. Don't guess.</li>
+</ul>
+<h2 id="where-this-leaves-you">Where This Leaves You</h2>
+<ul>
+<li>Every setting is entered and the system is still in bypass.</li>
+<li>Next: <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a> — run the first full regeneration and bypass sequence, leak-check, and test the water.</li>
+</ul>
+<p><strong>Related:</strong> <a href="#03-field-sop-md" class="ilink">The Install SOP</a> · <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a> · <a href="#10-quick-reference-md" class="ilink">Quick Reference</a></p><div class="pn"><a class="pn-a" href="#03-field-sop-md">← The Install — Step-by-Step (Field SO…</a><a class="pn-a next" href="#05-ro-install-md">Under-Sink RO Install →</a></div></article><article id="05-ro-install-md" class="doc"><h1 id="under-sink-ro-install">Under-Sink RO Install</h1>
+<p>This section covers the under-sink reverse-osmosis drinking system — the faucet, the unit, the storage, and the leak check — so you install ours the same way every time and never leave a slow leak behind a cabinet.</p>
+<h2 id="what-youre-installing">What You're Installing</h2>
+<p>The RO is a separate drinking-water system that lives under the kitchen sink and feeds a dedicated faucet on the counter. It is independent of the whole-home softener — its own supply tap, its own filter bank, its own drain connection.</p>
+<p>Two versions ship, depending on the job:</p>
+<ul>
+<li><strong>HW800 AlkaPro tankless RO</strong> — the standard on most city bundles. 7-stage, 800 GPD, on-demand (no storage tank), with a built-in alkaline remineralizer and auto-flush. Finished water comes out around 8.5–9.0 pH. <strong>Needs electricity.</strong></li>
+<li><strong>Tank RO</strong> — a steel-shell storage tank with a food-grade butyl bladder that pressurizes RO water for steady faucet flow. Works without electricity. <strong>No built-in alkaline stage</strong> — remineralizing takes a separate external add-on filter.</li>
+</ul>
+<p>Both strip contaminants down through the membrane; only the tankless unit adds healthy minerals back natively (on a tank RO that's an external add-on filter). The tankless unit filters down to <strong>0.0001µm</strong>, and its NSF thin-film RO membrane runs <strong>95–99% rejection</strong> on TDS, heavy metals, microplastics, PFAs, and bacteria/viruses.</p>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> under-sink RO layout — dedicated faucet up through the counter, the RO unit and (if tank) the storage tank inside the cabinet, the drain connection, and the cold-water supply tie-in with the shutoff T — <em>coming soon</em></p>
+</blockquote>
+<h2 id="filter-stages">Filter Stages</h2>
+<p>On the tankless unit, three replaceable filters sit behind a removable magnetic faceplate. Water moves through them in order:</p>
+<ul>
+<li><strong>Pre-carbon</strong> — the large fridge-style filter; first-stage carbon.</li>
+<li><strong>RO membrane</strong> — the fine membrane that removes everything.</li>
+<li><strong>Post-carbon with built-in alkaline remineralizer</strong> — final polish that adds minerals back.</li>
+</ul>
+<p>A tank RO has no built-in alkaline stage — it takes an external add-on filter instead, and those external filters are a known leak point. Know which unit you're on before you quote a filter change.</p>
+<blockquote>
+<p>📹 <strong>Video:</strong> the three RO filters behind the magnetic faceplate, in flow order — <em>link coming soon</em></p>
+</blockquote>
+<h2 id="plan-the-sink-first">Plan the Sink First</h2>
+<p>Before you drill anything, assess the sink and plan the whole layout.</p>
+<ul>
+<li><strong>Tankless RO: confirm a usable outlet in the sink cabinet before you start.</strong> The HW800 needs electricity. No outlet → call the office before starting — don't drill a countertop for a unit you can't power.</li>
+<li>Confirm whether the sink already has a spare hole for the drinking faucet. A <strong>new dedicated faucet hole</strong> often needs to be drilled.</li>
+<li>Check the countertop material. <strong>Granite and quartz are harder to drill</strong> — that's what the 1/2"–5/8" diamond bit in your kit (<a href="#02-before-the-job-md" class="ilink">Before the Job</a>) is for.</li>
+<li>Plan the layout for <strong>symmetry</strong> — the RO unit on one side of the cabinet, the faucet run on the other.</li>
+<li>Map where the tubing and any wiring will run <strong>behind the fixtures</strong> so no line ends up under tension. Lines under constant tension leak.</li>
+</ul>
+<h2 id="drill-the-faucet-hole">Drill the Faucet Hole</h2>
+<p>Drill the dedicated faucet hole through the countertop.</p>
+<ul>
+<li>Granite and quartz take the diamond bit and extra time — plan for it.</li>
+<li>Once the hole is through, the faucet supply line pokes up about <strong>¼"</strong> above the countertop so the faucet seats cleanly.</li>
+</ul>
+<h2 id="mount-the-faucet">Mount the Faucet</h2>
+<p>The drinking faucet mounts through the fresh hole and seals from both sides.</p>
+<ul>
+<li>Install it with <strong>both rubber gaskets.</strong> The cover disc is larger than the gasket rings, so there's no leak path around it.</li>
+<li>The <strong>spout swivels; the base stays fixed.</strong> It hand-tightens <strong>clockwise</strong> — no wrench needed.</li>
+<li>Seat it snug so it doesn't spin loose, but this is a hand-tight fitting.</li>
+</ul>
+<h2 id="run-the-tubing">Run the Tubing</h2>
+<p>Route every line behind the fixtures and leave yourself room to service the unit later.</p>
+<ul>
+<li>Keep all tubing <strong>behind the fixtures</strong>, never pulled tight. A line under tension is a future leak.</li>
+<li>Leave <strong>slack on every line — the most slack on the faucet line.</strong></li>
+<li><strong>Never cut the faucet line short.</strong> The slack is what lets you pull the whole unit out of the cabinet for a filter change or service.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> routing tubing behind fixtures and leaving service slack, most on the faucet line — <em>link coming soon</em></p>
+</blockquote>
+<h2 id="tie-into-the-supply-and-add-the-shutoff-t">Tie Into the Supply and Add the Shutoff T</h2>
+<p>Tie the RO into the under-sink supply and give the homeowner a way to isolate it.</p>
+<ul>
+<li>Install a <strong>shutoff T at the RO tie-in</strong> per the unit's instructions. If the RO ever leaks, the homeowner turns the tab to cut water to the RO without shutting off the whole sink.</li>
+<li>Point out the shutoff T during the <a href="#07-customer-handoff-md" class="ilink">Customer Handoff</a> walkthrough — it's the homeowner's first move on any RO leak.</li>
+</ul>
+<h2 id="drain-connection">Drain Connection</h2>
+<p>The RO's reject water needs a drain path under the sink.</p>
+<ul>
+<li>The exact connection method isn't documented in this guide yet — <strong>confirm the shop-standard drain procedure with the office before job day.</strong> Don't improvise one on site.</li>
+</ul>
+<h2 id="the-storage-tank-tank-ro-only">The Storage Tank (Tank RO Only)</h2>
+<p>If the job is a tank RO rather than the tankless HW800, the storage tank sits in the cabinet:</p>
+<ul>
+<li>It's a steel shell with a food-grade butyl bladder that stores and pressurizes RO water for steady flow.</li>
+<li>It fits under most kitchen sinks and works without electricity.</li>
+<li>The tankless HW800 has no storage tank at all — it's on-demand.</li>
+</ul>
+<h2 id="power-on-flush-and-leak-check">Power On, Flush, and Leak Check</h2>
+<p>Do this with the unit still <strong>out in the open</strong> — do not tuck anything into the back of the cabinet yet.</p>
+<ul>
+<li>Turn the water on and confirm flow through the system.</li>
+<li><strong>Power the RO on while it's still exposed.</strong> Air escaping is a good sign — it means the unit is priming all filters to drain.</li>
+<li>The system self-primes and flushes: the drain kicks and the water clears. There is <strong>no run-in time</strong> required before the water is drinkable — it primes electronically.</li>
+<li><strong>Watch every fitting for leaks while everything is still visible.</strong> A leak you miss here becomes a hidden slow leak the customer finds weeks later.</li>
+</ul>
+<p>Only <strong>after the leak check passes</strong> do you tuck the unit and the lines neatly to the back of the cabinet.</p>
+<blockquote>
+<p>📹 <strong>Video:</strong> powering the RO on while exposed, air/drain kick, and the leak check before tucking — <em>link coming soon</em></p>
+</blockquote>
+<h2 id="fridge-lines-the-policy">Fridge Lines: The Policy</h2>
+<p><strong>We don't tie ROs into refrigerators.</strong> Pressure and communication issues make the outcome roughly a coin flip — talk the customer out of it.</p>
+<ul>
+<li>If the customer insists <strong>and</strong> the office has booked it: it's a <strong>+$300–400</strong> add, tell them to expect quirks, and offer to disconnect it if it misbehaves.</li>
+<li>On a kitchen island it's effectively impossible without major work — don't attempt it.</li>
+<li>If a booked fridge line shows up on your work order, confirm the hookup method with the office before job day — it isn't documented here.</li>
+</ul>
+<h2 id="hand-it-off">Hand It Off</h2>
+<p>The customer walkthrough for the RO (10-second reset, filter changes, shutoff T) lives in <strong><a href="#07-customer-handoff-md" class="ilink">Customer Handoff</a></strong> — deliver it there, not piecemeal at the sink. Don't skip the 10-second-reset and filter-change points.</p>
+<h2 id="ro-install-checklist">RO Install Checklist</h2>
+<ul>
+<li>Tankless unit: usable outlet in the cabinet confirmed <strong>before drilling.</strong></li>
+<li>New faucet hole drilled (granite/quartz: the diamond bit).</li>
+<li>Supply line pokes up ~<strong>¼"</strong> on the counter.</li>
+<li>Faucet mounted with <strong>both gaskets</strong>; spout swivels, base fixed, hand-tight clockwise.</li>
+<li>All tubing routed <strong>behind fixtures</strong>, no tension; <strong>slack on every line, most on the faucet</strong> (never cut short).</li>
+<li><strong>Shutoff T</strong> installed at the RO tie-in.</li>
+<li>Drain connection made per the office-confirmed procedure.</li>
+<li>Powered on <strong>while exposed</strong>; air + drain kick seen; <strong>leak check passed before tucking.</strong></li>
+<li>Unit and lines tucked only after the leak check.</li>
+</ul>
+<p><strong>Related:</strong> <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>, <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a>, <a href="#07-customer-handoff-md" class="ilink">Customer Handoff</a>.</p><div class="pn"><a class="pn-a" href="#04-valve-programming-md">← Valve Programming</a><a class="pn-a next" href="#06-startup-testing-verification-md">Startup, Testing &amp; Verification →</a></div></article><article id="06-startup-testing-verification-md" class="doc"><h1 id="startup-testing-verification">Startup, Testing &amp; Verification</h1>
+<p>Bring the system online, run the mandatory first regeneration, prove everything is dry under real flow, and verify the results with water tests — then run the final checklist before the customer walkthrough.</p>
+<h2 id="where-you-should-be">Where You Should Be</h2>
+<p>Don't start this section until all three are true:</p>
+<ul>
+<li><strong><a href="#03-field-sop-md" class="ilink">The Install SOP</a> complete:</strong> system fully plumbed and mounted, bypass valve in <strong>BYPASS</strong>, main water back on, house repressurized, tie-in joints checked dry.</li>
+<li><strong><a href="#04-valve-programming-md" class="ilink">Valve Programming</a> complete:</strong> valve programmed — hardness, regen time, max-days, clock.</li>
+<li><strong><a href="#05-ro-install-md" class="ilink">RO Install</a> complete (RO jobs):</strong> RO installed, leak-checked out in the open, then tucked.</li>
+</ul>
+<p>Do the steps below in order. Never skip verification — a problem caught now is a five-minute fix instead of a return call.</p>
+<h2 id="startup-checks">Startup Checks</h2>
+<h3 id="confirm-the-clock">Confirm the clock</h3>
+<p>The unit resumes on re-plug, and a correct clock is what keeps gallons-remaining and the regeneration schedule accurate.</p>
+<ul>
+<li>Confirm the display clock reads the way <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>'s programming left it.</li>
+</ul>
+<h3 id="confirm-the-regeneration-programming">Confirm the regeneration programming</h3>
+<p>The valve runs <strong>demand regeneration</strong> — programmed with the home's hardness, it counts gallons and regenerates based on actual usage. The max-days setting is a backstop that forces a self-clean even in a low-use home. Net effect: roughly monthly, at 2 a.m., while the customer sleeps. Never set or describe it as a fixed monthly timer.</p>
+<p>Verify against <a href="#04-valve-programming-md" class="ilink">Valve Programming</a> (programming lives there — this is a check, not a re-teach):</p>
+<ul>
+<li><strong>Hardness</strong> = the tested GPG on the <strong>work order</strong>. You weren't at the sales test — the office puts the number on the work order. If it's missing, call the office or run the hardness drop test below on untreated water before trusting any number.</li>
+<li><strong>Regen time</strong> = 2:00 a.m.</li>
+<li><strong>Max-days backstop</strong> set per <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>'s table (14–28 days depending on hardness).</li>
+</ul>
+<h3 id="confirm-brine-and-drain-before-any-cycle">Confirm brine and drain before any cycle</h3>
+<blockquote>
+<p><span class="warn">!</span> <strong>Never run a cycle with the brine tank disconnected.</strong> Running the system to zero with no brine tank shoots water straight out the open port.</p>
+</blockquote>
+<ul>
+<li>Brine line connected, clip in place.</li>
+<li>Drain line connected and routed out, flow restrictor installed (<a href="#03-field-sop-md" class="ilink">The Install SOP</a>).</li>
+</ul>
+<h2 id="bring-it-into-service-the-first-regeneration">Bring It Into Service — the First Regeneration</h2>
+<p>Do not put the system into service straight off the truck. The first thing the softener does on your install is a <strong>full manual regeneration/backwash</strong>.</p>
+<h3 id="why-its-mandatory">Why it's mandatory</h3>
+<p>The first regen rinses the carbon media's fines and dust out to drain and settles the media in the tank. Skip it and the carbon underperforms from day one because the fines never rinse out.</p>
+<h3 id="run-it">Run it</h3>
+<ul>
+<li><strong>Open the bypass slowly</strong> from bypass into the service position. Once open, leave it <strong>fully open</strong> — fully open or fully closed, never in between.</li>
+<li>Kick off the initial regeneration/backwash and let it run <strong>fully</strong> to completion.</li>
+<li>Stay with the unit while it cycles — this is your leak check under real flow.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> starting a manual regeneration on the control head, and what a healthy backwash looks and sounds like — <em>link coming soon</em></p>
+</blockquote>
+<h3 id="leak-check-under-regeneration-flow">Leak-check under regeneration flow</h3>
+<p>You already leak-checked the RO in the open (<a href="#05-ro-install-md" class="ilink">RO Install</a>). Now check the softener and every joint you touched while the regen is running and the system is under its own flow.</p>
+<ul>
+<li>Re-check <strong>every joint</strong> — no pinched or backed-out rings.</li>
+<li>A pinched ring works its way out and leaks later — re-seat it now.</li>
+<li>Never leave a fitting forced against a ring — rubbing pushes the clip out.</li>
+<li>Confirm brine tank, drain, bypass, and shutoff T are all connected and correctly oriented.</li>
+</ul>
+<p>Catching a weep now prevents the hidden slow leak the customer finds weeks later.</p>
+<h3 id="give-the-home-time-to-come-into-soft-water">Give the home time to come into soft water</h3>
+<p>Allow roughly <strong>30 minutes</strong> for the house to come fully into soft water while the residual hard water in the lines clears — longer in two-story homes. This matters for the hardness test below: the cold supply can read high right after startup simply because old water is still flushing through.</p>
+<h2 id="post-install-water-tests">Post-Install Water Tests</h2>
+<p>Now prove the system delivers. The rule that trips up new installers is <strong>what you test where</strong> — get it wrong and a working system looks like a failed install.</p>
+<p><strong>Test kit:</strong> hardness vial + Solutions 1 &amp; 2, chlorine vial + reagent, TDS meter. Confirm with the office who supplies the test kit and replaces used reagents before your first job.</p>
+<h3 id="the-one-rule-to-memorize">The one rule to memorize</h3>
+<ul>
+<li><strong>Whole-home (softened) water:</strong> test <strong>hardness</strong> (chlorine optional). <strong>Never test TDS here.</strong></li>
+<li><strong>RO faucet water:</strong> test <strong>TDS</strong> only.</li>
+</ul>
+<p>A softener does not lower TDS, so a TDS reading on whole-home water barely moves after install — it looks broken even though it's working perfectly. TDS only drops on water that has passed through the RO.</p>
+<h3 id="hardness-test-cold-supply">Hardness test — cold supply</h3>
+<p>Test the <strong>cold</strong> supply — the hot side can carry residual hardness from the old water heater.</p>
+<p><strong>Tools:</strong> hardness vial, Solution 1 (indicator), Solution 2 (titrant), cold faucet water.</p>
+<ul>
+<li>Fill the vial with cold water to the <strong>"1 grain per gallon" line</strong>.</li>
+<li>Add <strong>7 drops of Solution 1</strong>, cap, and shake.</li>
+<li>Add <strong>Solution 2 one drop at a time</strong>, counting, until the color turns.</li>
+</ul>
+<p><strong>How to read it:</strong></p>
+<ul>
+<li>Turns <strong>blue immediately, never pink</strong> = <strong>0 GPG</strong>. That's your pass.</li>
+<li>If it goes pink first, the number of Solution 2 drops to turn it blue = grains per gallon. You want <strong>0</strong>.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> running the hardness titration and reading the blue-immediately endpoint — <strong><a href="https://drive.google.com/file/d/1paCBbVBntzeUDYZbPSXiUGmsC8pnbVdm/view" target="_blank" rel="noopener">watch it here</a></strong></p>
+</blockquote>
+<p><strong>Two things so a good install doesn't read as a failure:</strong></p>
+<ul>
+<li>Old water heaters may briefly show <strong>~2 GPG on the hot side</strong> — that's residual, not a bad install. Test the <strong>cold</strong> supply.</li>
+<li>A full hardness retest at the customer's faucet is best done about <strong>a month out</strong> — residual hardness in the supply lines and water heater needs time to flush, or the cold side can still read high right after install.</li>
+</ul>
+<h3 id="chlorine-test-optional">Chlorine test (optional)</h3>
+<p>Optional at post-install, but useful to confirm the carbon is working.</p>
+<p><strong>Tools:</strong> chlorine vial, chlorine reagent, faucet water.</p>
+<ul>
+<li>Fill the vial to the <strong>10 ml line</strong>.</li>
+<li>Add <strong>5–10 chlorine drops</strong> and watch the color develop (yellow → dark yellow → brown; darker = more chlorine).</li>
+</ul>
+<p>Post-carbon, you want a noticeably lighter result than the pre-install reading.</p>
+<blockquote>
+<p>📹 <strong>Video:</strong> running the chlorine drop test and reading color intensity — <strong><a href="https://drive.google.com/file/d/187SNxCIDxvRQSuIng-CVTP2W4QxwKnnj/view" target="_blank" rel="noopener">watch it here</a></strong></p>
+</blockquote>
+<h3 id="tds-test-ro-faucet-only">TDS test — RO faucet only</h3>
+<p>This proves the RO drinking system. Test the <strong>RO faucet</strong>, not the sink faucet.</p>
+<p><strong>Tools:</strong> TDS meter, cup.</p>
+<ul>
+<li>Fill a cup from the <strong>RO faucet</strong>.</li>
+<li>Power on the meter, dip it, and wait for a <strong>stable reading</strong>.</li>
+</ul>
+<p><strong>How to read it:</strong></p>
+<ul>
+<li>RO water should read <strong>~100 ppm or less</strong> (how low depends on the source water).</li>
+<li>The RO retest can be done right after install — no waiting period.</li>
+<li>Never run TDS on the whole-home softened water — the number barely changes and looks like a failed install.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> dipping the TDS meter at the RO faucet and reading the sub-100 result — <strong><a href="https://drive.google.com/file/d/1-vPAwZZFG-aRvRcHxBOGIRpd8K2Pn-Ro/view" target="_blank" rel="noopener">watch it here</a></strong></p>
+<p>🖼 <strong>Diagram:</strong> two cups side by side — high TDS at the sink faucet vs. sub-100 at the RO faucet, with a red X over "don't TDS-test softened water" — <em>coming soon</em></p>
+</blockquote>
+<h2 id="final-pre-handoff-verification-checklist">Final Pre-Handoff Verification Checklist</h2>
+<p>Run this before the customer walkthrough. If any item fails, fix it before handoff.</p>
+<p><strong>Softener</strong></p>
+<ul>
+<li>Clock correct and one minute ahead (<a href="#04-valve-programming-md" class="ilink">Valve Programming</a>).</li>
+<li>Demand-regen programming verified: hardness = work-order GPG, regen time 2:00 a.m., max-days backstop set (<a href="#04-valve-programming-md" class="ilink">Valve Programming</a>).</li>
+<li>First full manual regeneration/backwash run to completion.</li>
+<li>Bypass opened to service — fully open, never in between.</li>
+<li>Brine tank connected, tower strapped, overflow fitting in place.</li>
+</ul>
+<p><strong>Plumbing &amp; joints</strong></p>
+<ul>
+<li>Every joint re-checked under regen flow — no pinched or backed-out rings, nothing forced against a ring.</li>
+<li>Drain line connected and routed out; flow restrictor installed (<a href="#03-field-sop-md" class="ilink">The Install SOP</a>).</li>
+<li>Bypass valve oriented (arrow in / arrow out).</li>
+<li>RO shutoff T installed and connected.</li>
+</ul>
+<p><strong>Test results</strong></p>
+<ul>
+<li>Cold-supply hardness = <strong>0 GPG</strong> (blue immediately) — old heaters may briefly show ~2 GPG on the hot side.</li>
+<li>RO faucet TDS = <strong>~100 ppm or less</strong>.</li>
+<li>Chlorine noticeably reduced (optional).</li>
+<li>No TDS test run on the whole-home softened water.</li>
+</ul>
+<p><strong>Leave-behinds</strong></p>
+<ul>
+<li>Complimentary <strong>40 lb bag of salt</strong> poured into the brine tank; empty bag left so the customer knows what to buy.</li>
+</ul>
+<p>Every box checked → customer walkthrough (<a href="#07-customer-handoff-md" class="ilink">Customer Handoff</a>).</p>
+<p><strong>Related:</strong> <a href="#03-field-sop-md" class="ilink">The Install SOP</a>, <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>, <a href="#05-ro-install-md" class="ilink">RO Install</a>, <a href="#07-customer-handoff-md" class="ilink">Customer Handoff</a></p><div class="pn"><a class="pn-a" href="#05-ro-install-md">← Under-Sink RO Install</a><a class="pn-a next" href="#07-customer-handoff-md">Customer Handoff →</a></div></article><article id="07-customer-handoff-md" class="doc"><h1 id="customer-handoff">Customer Handoff</h1>
+<p>The last twenty minutes on site. Walk every stop below at the equipment, out loud, and let the customer ask questions — this list is what prevents the avoidable callbacks and earns the review.</p>
+<h2 id="two-things-you-physically-leave-behind">Two things you physically leave behind</h2>
+<ul>
+<li>The complimentary <strong>40 lb bag of salt</strong> — pour it into the brine tank at install, and leave the <strong>empty bag</strong> so the customer knows what to buy.</li>
+<li>The <strong>Owner's Quick Guide</strong> (appendix below) — print it or text it, and hand it to the customer before you leave. It's what they'll reach for in three months when the salt runs low.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> a full model handoff — tech walking a homeowner from the softener to the RO faucet, hitting every stop below — <em>link coming soon</em></p>
+</blockquote>
+<h2 id="the-walkthrough-five-stops-in-order">The walkthrough — five stops, in order</h2>
+<p>The Owner's Quick Guide (appendix) carries the exact customer wording — don't recite from memory. At each stop, point at the hardware, cover the matching Quick Guide section out loud, and hit the notes below.</p>
+<h3 id="stop-1-softener-and-salt-the-tall-tank">Stop 1 — Softener and salt (the tall tank)</h3>
+<ul>
+<li>Cover the Quick Guide sections <strong>"Your softener"</strong> and <strong>"Salt — the only thing you do"</strong> in full.</li>
+<li><strong>Say the health reassurance out loud</strong> — the salt never enters their drinking water; it only rinses the system, like an oil change. It heads off the most common worry.</li>
+<li><strong>Point out the clock</strong> — correct time keeps the cleaning schedule and gallons tracking accurate. If it ever resets after a power outage, they call us.</li>
+<li>If they ask about the cleaning cycle: it regenerates <strong>automatically based on their usage — roughly monthly, at 2 a.m.</strong> It's not a fixed timer.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> the brine tank with the fill line marked "keep 2–3 bags," and a note that murky water is normal — <em>coming soon</em></p>
+</blockquote>
+<h3 id="stop-2-bypass-and-main-shutoff-at-the-valve">Stop 2 — Bypass and main shutoff (at the valve)</h3>
+<ul>
+<li>Cover the Quick Guide section <strong>"Two valves to know."</strong></li>
+<li><strong>Fully open or fully closed, never in between</strong> — the bypass controls pressure only, not softness.</li>
+<li>Have the customer put a hand on the <strong>main shutoff</strong> once — the bypass location is their whole-home kill switch for ANY plumbing emergency.</li>
+</ul>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> the bypass valve in "open" vs "bypass (to the side)" positions, labeled — <em>coming soon</em></p>
+</blockquote>
+<h3 id="stop-3-ro-faucet-at-the-kitchen-sink">Stop 3 — RO faucet (at the kitchen sink)</h3>
+<ul>
+<li>Cover the Quick Guide section <strong>"Your drinking-water faucet."</strong></li>
+<li>Do not skip: the <strong>10-second reset</strong> (unplug 10 seconds, plug back in — it auto-resets) and the <strong>yearly filter change</strong> (red flashing light = due; change all filters together).</li>
+<li>Physically show the <strong>shutoff T</strong> behind the unit — sideways cuts water to the RO only — and the faucet action (spout swivels, base fixed, hand-tightens clockwise).</li>
+</ul>
+<h3 id="stop-4-what-to-expect">Stop 4 — What to expect</h3>
+<ul>
+<li>Cover the Quick Guide section <strong>"Good to know."</strong></li>
+<li>Set the timeline: soft water in <strong>~30 minutes</strong>, longer in two-story homes.</li>
+<li>Drain line: it only carries water during regeneration — roughly once a month — so it sits empty almost all the time. It's bracketed to the wall and won't freeze; outdoor installs drip a faucet on hard-freeze nights.</li>
+<li>Pressure is unchanged — the softener installs after the PRV, and we don't adjust the PRV.</li>
+</ul>
+<h3 id="stop-5-warranty-service-and-the-ask">Stop 5 — Warranty, service, and the ask</h3>
+<ul>
+<li>Cover the Quick Guide section <strong>"Service &amp; warranty."</strong> Quote the tiers exactly: <strong>lifetime</strong> on the system's dry parts (mechanical parts that never touch water) · <strong>5 years</strong> on the control valve, circuit board, and filtration media · <strong>1 year</strong> on labor.</li>
+<li><strong>Year 1: all service visits free.</strong> After that: $199 annual service (we change the RO filters and check everything over) and a $199 trip charge for one-off visits.</li>
+<li><strong>Replacement RO filters come through us</strong> — the wrong big-box filters can damage the system. That's the reason, not a markup.</li>
+<li>Then make the ask: a <strong>Google review naming their technician</strong> means the world to a local company, and mention the <strong>$100 referral gift cards</strong> for friends and neighbors.</li>
+</ul>
+<hr />
+<h1 id="appendix-owners-quick-guide-leave-with-the-customer">Appendix — Owner's Quick Guide (leave with the customer)</h1>
+<p><em>This is the customer-facing sheet and the canonical wording for the walkthrough above. Hand it over as-is; do not add installer notes to their copy.</em></p>
+<h2 id="welcome-to-soft-clean-water">Welcome to soft, clean water! 💧</h2>
+<p><strong>Kind Water Co</strong> · Questions? Message your install group chat or call us anytime.</p>
+<h3 id="your-softener-the-tall-tank-in-the-garage">Your softener (the tall tank in the garage)</h3>
+<ul>
+<li><strong>It cleans itself automatically based on your usage</strong> — roughly once a month, at 2 a.m. You may hear it; that's normal. No filters to change, ever.</li>
+<li><strong>Soft water arrives within ~30 minutes</strong> of installation (a little longer in two-story homes).</li>
+</ul>
+<h3 id="salt-the-only-thing-you-do">Salt — the only thing you do</h3>
+<ul>
+<li>Check the <strong>salt tank every 3–4 months</strong>. If it's low, pour in salt — keep it roughly <strong>2–3 bags</strong> full (three, not four — four can overflow).</li>
+<li><strong>Any "water softener salt"</strong> works: crystals or pellets, the cheapest bag is fine (~$7 at Home Depot, Lowe's, Costco, Tractor Supply). <strong>Never pool salt.</strong></li>
+<li>Treat it like a gas tank: running low is fine, but <strong>don't leave it empty</strong> — an empty tank long-term ruins the system's media (that's not covered by warranty).</li>
+<li><strong>Murky water in the salt tank is normal.</strong> That water never enters your home — it's just for cleaning the system.</li>
+<li>❤️ <strong>Health note:</strong> the salt does <strong>not</strong> go into your drinking water — it only rinses the system (like an oil change). Softened water adds almost no sodium.</li>
+</ul>
+<h3 id="your-drinking-water-faucet-the-ro-under-the-kitchen-sink">Your drinking-water faucet (the RO under the kitchen sink)</h3>
+<ul>
+<li>Drink from it immediately — it's purified + remineralized (alkaline) water on tap.</li>
+<li><strong>Filters:</strong> change <strong>once a year</strong> — no tools, the housings are magnetic, instructions are on the unit. When a light <strong>flashes red</strong>, filters are due. We'll call you when it's time, or change them yourself.</li>
+<li><strong>Buy replacement filters through us</strong> — the wrong store-bought filters can damage the system.</li>
+<li><strong>If the RO ever stops:</strong> unplug it for <strong>10 seconds</strong> and plug back in — it resets itself.</li>
+<li><strong>If it ever leaks:</strong> turn the <strong>shutoff T</strong> — the little T-handle valve behind the unit — sideways; that shuts off water to the RO only. Then call us.</li>
+</ul>
+<h3 id="two-valves-to-know">Two valves to know</h3>
+<ul>
+<li><strong>Bypass valve</strong> (on the softener): turning it gives you full city water, unsoftened — use it if you're away for months or we ask you to. Keep it <strong>fully open or fully closed</strong>, never in between.</li>
+<li><strong>Main shutoff:</strong> the same spot is your <strong>whole-house water shutoff</strong> — for ANY plumbing emergency (toilet, burst pipe), this kills the water.</li>
+</ul>
+<h3 id="good-to-know">Good to know</h3>
+<ul>
+<li><strong>Water pressure:</strong> the system doesn't reduce it (1" line throughout). Pressure issues come from the city/your regulator, not the softener.</li>
+<li><strong>Winter:</strong> the drain line only runs while the system cleans itself (roughly once a month) — it sits empty the rest of the time and won't freeze. On hard-freeze nights (outdoor installs), let a faucet drip.</li>
+<li><strong>Power outage:</strong> you still get soft, filtered water. Only the under-sink RO pauses until power returns.</li>
+</ul>
+<h3 id="service-warranty">Service &amp; warranty</h3>
+<ul>
+<li><strong>Warranty:</strong> <strong>lifetime</strong> on the system's dry parts (mechanical parts that never touch water) · <strong>5 years</strong> on the control valve, circuit board, and filtration media · <strong>1 year</strong> on labor.</li>
+<li><strong>Year 1: all service visits free.</strong> After that: <strong>$199 annual service</strong> (we change RO filters + check everything) and $199 trip charge for one-off visits.</li>
+<li>📣 <strong>Love your install? A Google review naming your technician means the world to a local company — and ask us about the $100 referral gift cards for friends and neighbors.</strong></li>
+</ul>
+<hr />
+<p><strong>Related:</strong> <a href="#04-valve-programming-md" class="ilink">Valve Programming</a> · <a href="#05-ro-install-md" class="ilink">RO Install</a> · <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a></p><div class="pn"><a class="pn-a" href="#06-startup-testing-verification-md">← Startup, Testing &amp; Verification</a><a class="pn-a next" href="#08-troubleshooting-callbacks-md">Troubleshooting &amp; Callbacks →</a></div></article><article id="08-troubleshooting-callbacks-md" class="doc"><h1 id="troubleshooting-callbacks">Troubleshooting &amp; Callbacks</h1>
+<p>Most callbacks aren't broken systems — they're normal break-in behavior. Learn the field tells, prevent the avoidable callbacks on install day, and know the short list of situations that are genuinely a warranty claim.</p>
+<h2 id="the-mindset-lead-with-reassurance-not-a-truck">The mindset: lead with reassurance, not a truck</h2>
+<p>A freshly installed system needs time to clear old water out of the home's pipes, and some first-week behavior (white particles from the RO's remineralization, residual hardness working out) is completely normal. Before you schedule a return trip, work the symptom against the causes below — a short, confident explanation on the phone solves most first-week calls.</p>
+<ul>
+<li>Find the symptom, then check causes in order.</li>
+<li>Lead with the reassurance line before rolling a truck.</li>
+<li>If it's genuinely a fault, see "When it IS a warranty claim."</li>
+</ul>
+<h2 id="softener-symptoms">Softener symptoms</h2>
+<h3 id="the-water-isnt-soft-just-installed">"The water isn't soft" (just installed)</h3>
+<p>Work these in order — most land on cause 1 or 2.</p>
+<ul>
+<li><strong>Just installed.</strong> The home takes about <strong>30 minutes</strong> to come into soft water as residual hard water clears the pipes. Longer in two-story homes.</li>
+<li><strong>Hot water still a little hard.</strong> Normal for a while. An old water heater is full of buildup, and soft water leaches it back out — expect roughly <strong>2 GPG on the hot side, temporarily</strong>. Test the <strong>cold supply</strong>, not the hot: titration drops that turn <strong>blue immediately mean 0 GPG, which means the system is working.</strong></li>
+<li><strong>Out of salt.</strong> An empty brine tank means no regeneration, which means hard water. Refill the salt and run a regeneration. Resin does not just die — if it tested good past about 60 days, the failure is a lack of salt, not the equipment.</li>
+<li><strong>Hardness setting too low.</strong> Confirm the valve is programmed to the <strong>tested GPG</strong> on the work order — the factory default setting (10) under-treats most local water, and a too-low setting lets hardness break through between regenerations. Reprogram if needed (<a href="#04-valve-programming-md" class="ilink">Valve Programming</a>).</li>
+<li><strong>Genuinely dead within weeks.</strong> Rare — this is a warranty path. See "When it IS a warranty claim."</li>
+</ul>
+<h3 id="it-regenerates-every-night">"It regenerates every night"</h3>
+<ul>
+<li>The schedule got thrown off. A <strong>power outage can reset the days-to-regen counter to zero</strong>, so it cycles nightly. Reprogram it (<a href="#04-valve-programming-md" class="ilink">Valve Programming</a>).</li>
+<li>An undersized old unit can also over-regenerate — relevant if you're servicing equipment that isn't ours.</li>
+</ul>
+<h3 id="theres-dirty-water-in-the-salt-tank">"There's dirty water in the salt tank"</h3>
+<ul>
+<li><strong>Normal.</strong> That's the brine solution sitting in the tank, not the home's drinking water. It's supposed to sit there, and it can look murky.</li>
+</ul>
+<h3 id="it-makes-noise-at-night">"It makes noise at night"</h3>
+<ul>
+<li><strong>Normal.</strong> That's the regeneration and backwash cycle — think of it as a salt-water car wash. The valve regenerates on demand, roughly once a month in normal use, typically around 2 a.m.</li>
+</ul>
+<h3 id="will-the-drain-line-freeze-iowaillinois-winters">"Will the drain line freeze?" (Iowa/Illinois winters)</h3>
+<ul>
+<li><strong>No.</strong> The drain line only carries water during regeneration — roughly once a month (the valve regenerates on demand) — so it sits empty almost all the time and is never stagnant.</li>
+<li>On a hard-freeze night with an outdoor install, tell the customer to <strong>drip a faucet</strong> as a precaution.</li>
+</ul>
+<h3 id="the-brine-tank-is-overflowing">"The brine tank is overflowing"</h3>
+<ul>
+<li>Usually <strong>too much salt</strong> — four bags can push water out the overflow. Recommend keeping it around <strong>three bags</strong>.</li>
+<li>If salt level is fine, the overflow fitting may simply be doing its job.</li>
+</ul>
+<h2 id="ro-symptoms">RO symptoms</h2>
+<h3 id="the-ro-stopped-making-water">"The RO stopped making water"</h3>
+<ul>
+<li><strong>Reset it first.</strong> Unplug the unit for <strong>10 seconds</strong>, then plug it back in. The built-in safety auto-resets.</li>
+<li><strong>Lights flashing red</strong> means a filter is due. Change <strong>all filters together</strong> — the others are only days behind. Standard service is <strong>all three filters every 12 months</strong> at the annual visit.</li>
+<li><strong>No power.</strong> A tankless RO needs <strong>electricity</strong> — check the outlet and the GFCI. (A tank RO still works without power.)</li>
+</ul>
+<h3 id="the-ro-is-leaking">"The RO is leaking"</h3>
+<ul>
+<li><strong>Customer stopgap over the phone:</strong> have them turn the <strong>shutoff T</strong> sideways to kill water to the RO only. The rest of the house is unaffected. Then schedule the visit.</li>
+<li>
+<p><strong>On the bench, the usual leak points are:</strong></p>
+</li>
+<li>
+<p>lines under tension</p>
+</li>
+<li>lines cut too short</li>
+<li>external add-on alkaline filters (this is why we prefer the built-in remineralization)</li>
+</ul>
+<h3 id="the-fridge-icewater-has-been-weird-since-the-install">"The fridge ice/water has been weird since the install"</h3>
+<ul>
+<li>This is why we <strong>talk customers out of fridge tie-ins</strong> — pressure and communication issues make the outcome roughly a coin flip, and we only do one when the office has booked it.</li>
+<li>If a fridge was tied in, quirks like this are expected — offer to disconnect it if it keeps misbehaving.</li>
+</ul>
+<h2 id="install-day-gotchas-prevent-the-callback">Install-day gotchas (prevent the callback)</h2>
+<p>Most callbacks are prevented on the truck, not fixed later. Build these into your routine on every job.</p>
+<ul>
+<li><strong>Tie in before the water-heater tee.</strong> Tie in after it and you only treat the cold water — the water heater keeps getting hard water. Hand-check the wall cavity first to confirm where you are in the run.</li>
+<li><strong>Never run a regen with the brine tank disconnected</strong> — water shoots out of the open port.</li>
+<li><strong>Power the RO on while it's still out in the open</strong> and leak-check it before tucking it back under the sink.</li>
+</ul>
+<h3 id="pre-leak-checklist-softener">Pre-leak checklist (softener)</h3>
+<p>Run this before you call the job done — any one of these missed becomes a callback.</p>
+<ul>
+<li><strong>Seat the bottom O-ring.</strong> Missing it is a 100% leak.</li>
+<li><strong>Install the brine-tank clip.</strong> Missing it lets the line pop off.</li>
+<li><strong>No pinched rings.</strong></li>
+<li><strong>Flow restrictor on the drain.</strong> Skip it and every regeneration wastes hundreds of gallons.</li>
+</ul>
+<h3 id="well-and-site-conditions">Well and site conditions</h3>
+<ul>
+<li><strong>Well dual-tank:</strong> the <strong>Katalox tank takes the downflow / air-injection valve</strong>. Verify the labeled valve is on the correct tank <em>before</em> you install. Not 100% sure which valve goes on which tank? Call the office — don't guess.</li>
+<li><strong>Septic homes:</strong> never route the regen drain into the septic tank — the salty regen water kills the tank's bacteria. Run it outside, about 3 feet underground in a flowerbed.</li>
+<li><strong>Galvanized pipes (older Iowa/Illinois homes):</strong> soft water leaches metal off galvanized pipe. Flag it to the customer and recommend a repipe where feasible.</li>
+<li><strong>High incoming pressure (around 120 PSI):</strong> the home needs a <strong>pressure regulator</strong>. It's not our system's issue, but flag it for the customer.</li>
+</ul>
+<h3 id="bring-the-right-parts">Bring the right parts</h3>
+<ul>
+<li>Bring the <strong>right faucet color and the right RO type</strong> for the job. Showing up with the wrong one is the top cause of return trips.</li>
+</ul>
+<h2 id="field-tells-fast-water-quality-diagnosis">Field tells: fast water-quality diagnosis</h2>
+<p>A quick look around the home tells you what you're dealing with before you test anything.</p>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> field-tells panel — toilet staining (iron), slimy film in the toilet tank (iron/sulfur bacteria), rotten-egg smell (sulfur), each mapped to its recommended system — <em>coming soon</em></p>
+</blockquote>
+<ul>
+<li><strong>Red rings or stains in toilets = iron.</strong> Move to iron testing and a dual-tank well setup or an H₂O₂ system.</li>
+<li><strong>Slimy film on the water in the toilet tank = iron/sulfur bacteria.</strong> Go straight to the <strong>H₂O₂ injection</strong> system.</li>
+<li><strong>Rotten-egg smell = sulfur</strong> (well). Use the <strong>H₂O₂ system</strong>.</li>
+</ul>
+<h2 id="first-weeks-is-this-normal-calls">First-weeks "is this normal?" calls</h2>
+<p>These are the calls that come in during the first days and weeks. Almost all are normal break-in behavior. Know the reassurance line so you can settle the customer on the spot — or walk them through the quick fix.</p>
+<h3 id="white-particles-foggy-water-from-the-new-ro-faucet">White particles / foggy water from the new RO faucet</h3>
+<ul>
+<li><strong>Normal — do not roll a truck.</strong> The tankless RO <strong>remineralizes</strong> — it adds calcium and magnesium back into the water, and that's what the customer is seeing.</li>
+<li><strong>What to tell them:</strong> "That's expected and completely harmless — your new RO puts healthy minerals back into the water, and that's what you're seeing. It clears up on its own."</li>
+</ul>
+<h3 id="the-water-doesnt-feel-slimysoft-yet">"The water doesn't feel slimy/soft yet"</h3>
+<ul>
+<li><strong>Walk them through the fix:</strong> have them <strong>hold down the regen button</strong> to force a regeneration, and confirm there's <strong>salt</strong> in the brine tank.</li>
+<li><strong>What to tell them:</strong> "No system makes water any slimier than another — what you're feeling is old hardness still sitting in your pipes getting picked up as it clears out. A quick hardness test will almost certainly show your water is fully soft."</li>
+<li>If still in doubt, offer a hardness test on the <strong>cold supply</strong> — drops turn blue immediately means 0 GPG, which means it's working.</li>
+</ul>
+<h3 id="the-water-is-coming-out-yellow-since-the-install">"The water is coming out yellow since the install"</h3>
+<ul>
+<li><strong>Walk them through the fix:</strong> turn on about <strong>five faucets and run them simultaneously for roughly 10 minutes straight</strong> to clear it.</li>
+<li><strong>Cause:</strong> the new soft water grabs leftover hardness inside the pipes, plus a little new resin/carbon bleeding off into the water at first.</li>
+<li><strong>What to tell them:</strong> "It's not dangerous — it just looks ugly. Run several faucets together for about ten minutes and it'll clear right up."</li>
+</ul>
+<h3 id="will-the-softener-hurt-my-lawn-sprinklers">"Will the softener hurt my lawn / sprinklers?"</h3>
+<ul>
+<li><strong>What to tell them:</strong> "The system doesn't touch your irrigation or sprinkler system — it only treats the water inside the house plus your hose bibs. That's how about 99% of homes are plumbed, so your lawn gets the same water it always has."</li>
+</ul>
+<h3 id="could-the-softener-discharge-corrode-my-septic">"Could the softener discharge corrode my septic?"</h3>
+<ul>
+<li><strong>Acknowledge it's a valid concern, then reassure.</strong> On septic homes we don't route the regen drain into the septic tank at all — salty regen water is bad for the tank's bacteria, so the drain runs outside instead.</li>
+<li>It's a small, infrequent discharge anyway — about <strong>50–60 gallons at around 2 a.m., roughly once a month</strong>.</li>
+<li><strong>If the customer asks to move or re-route the drain line:</strong> don't improvise a new location on the spot. Local discharge rules vary — confirm with the office before promising anything.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> the two clearing fixes on camera — forcing a regen with the regen button, and the five-faucet ten-minute flush for yellow water — <em>link coming soon</em></p>
+</blockquote>
+<h2 id="when-it-is-a-warranty-claim">When it IS a warranty claim</h2>
+<p>Most calls are not warranty claims. The short list that qualifies:</p>
+<ul>
+<li><strong>Dead or damaged out of the box, or failing within weeks.</strong> Document it with photo or video proof for the replacement. Expect this on roughly 1 in 50 jobs.</li>
+<li><strong>Freight damage.</strong> This must be documented <strong>before signing</strong> for the pallet (photos, all sides — see <a href="#02-before-the-job-md" class="ilink">Before the Job</a>).</li>
+</ul>
+<p>Anything outside that list — no salt, wrong settings, normal break-in behavior — is not a warranty item.</p>
+<p><strong>Related:</strong> <a href="#04-valve-programming-md" class="ilink">Valve Programming</a> · <a href="#10-quick-reference-md" class="ilink">Quick Reference</a>.</p><div class="pn"><a class="pn-a" href="#07-customer-handoff-md">← Customer Handoff</a><a class="pn-a next" href="#09-standards-and-working-with-us-md">Standards, Warranty &amp; Working With Us →</a></div></article><article id="09-standards-and-working-with-us-md" class="doc"><h1 id="standards-warranty-working-with-us">Standards, Warranty &amp; Working With Us</h1>
+<p>What we expect on every job, what the warranty covers (so you install to spec), and the working arrangement — pay, scheduling, who brings what, and the review bonus. Questions on any of it, or on a live job: call or text the office — contact info is in <a href="#00-start-here-md" class="ilink">Start Here</a>.</p>
+<h2 id="our-quality-standards">Our Quality Standards</h2>
+<p>We hired you because you already know plumbing. What we need is that every Kind Water Co install goes in the same way, to the same standard, every time — so the customer never has a reason to call us back.</p>
+<h3 id="on-time-clean-no-corner-cutting">On time, clean, no corner-cutting</h3>
+<ul>
+<li>Show up when you said you would. If a booking changes, tell us with as much notice as you can.</li>
+<li>Stage on a flat surface, clean up after yourself, and hand the home back better than you found it.</li>
+<li>Never skip a step to save time. The finishing details take the longest — and that is exactly where callbacks come from.</li>
+</ul>
+<h3 id="the-non-negotiables">The non-negotiables</h3>
+<p>Skip any one of these and you earn a callback. This is the canonical list — <a href="#03-field-sop-md" class="ilink">The Install SOP</a> has the step detail, and <a href="#10-quick-reference-md" class="ilink">Quick Reference</a>'s cheat sheet carries the same six lines.</p>
+<ul>
+<li><strong>Tie into the main BEFORE the water-heater tee</strong> — treats both hot and cold. After the tee = cold only, and the water heater keeps getting hard water.</li>
+<li><strong>Seat the bottom O-ring.</strong> Missing it leaks 100% of the time.</li>
+<li><strong>Install the brine-tank clip.</strong> Without it the line leaks and pops off.</li>
+<li><strong>Install the flow restrictor on the drain line.</strong> It limits regen waste to 50–60 gallons; skip it and every regen wastes hundreds.</li>
+<li><strong>Never run a regen cycle with the brine tank disconnected.</strong> Running to zero with an open port shoots water out.</li>
+<li><strong>Check every joint before you leave.</strong> No pinched rings, no backed-out rings.</li>
+</ul>
+<blockquote>
+<p>📹 <strong>Video:</strong> the six non-negotiables done right vs. the callback each one causes when skipped — <em>link coming soon</em></p>
+</blockquote>
+<h2 id="what-the-warranty-covers">What the Warranty Covers</h2>
+<p>You do not administer the warranty, but coverage only holds when the system is installed to our spec — so know the terms.</p>
+<h3 id="the-coverage-tiers">The coverage tiers</h3>
+<ul>
+<li><strong>Lifetime — system dry parts:</strong> the mechanical, non-consumable components that do not come into direct contact with water.</li>
+<li><strong>5 years — control valve, circuit board, and filtration media:</strong> defects in materials and workmanship under normal operating conditions.</li>
+<li><strong>1 year — labor:</strong> labor issues arising from the original installation, for one year from the date of purchase.</li>
+</ul>
+<p>Storage and media tanks carry lifetime coverage separately, under the manufacturer's warranty.</p>
+<h3 id="what-voids-it">What voids it</h3>
+<p>Coverage is valid only when the system is installed, operated, and maintained to Kind Water Co guidelines. It excludes damage from:</p>
+<ul>
+<li>Improper installation.</li>
+<li>Misuse, neglect, or unauthorized modifications.</li>
+<li>Environmental factors — flooding, freezing, or contaminant levels beyond what the system is rated for.</li>
+</ul>
+<p><strong>What this means for you.</strong>
+"Improper installation" is the phrase that matters to an installer. If a system fails because a step was skipped or a part was left out, that is not a warranty claim — it is a workmanship problem, and it lands on the install. The SOP and the non-negotiables above are what keep every job inside the coverage.</p>
+<p><strong>Replacement parts.</strong>
+Parts replaced under warranty carry only the remainder of the original period — a repair does not reset the clock — and must be fitted by a Kind Water Co-approved installer. Customers file claims through our office (proof of purchase plus installation documentation). Point anything warranty-related to the office rather than diagnosing coverage on site.</p>
+<h2 id="licensing-insurance">Licensing &amp; Insurance</h2>
+<p>We work only with licensed, insured installers.</p>
+<ul>
+<li>Before your first job, send us <strong>proof of your license and proof of insurance</strong> — we verify it before you go out.</li>
+<li>Keep your coverage current. If it lapses, tell us before you take another booking.</li>
+</ul>
+<h2 id="working-with-us-the-basics">Working With Us — The Basics</h2>
+<h3 id="pay-per-install">Pay per install</h3>
+<p>You are paid per install, not hourly.</p>
+<ul>
+<li><strong>$300–$750 per install</strong>, depending on the system, the scope of work, and your experience.</li>
+<li><strong>Around $500 is typical</strong> for a standard job.</li>
+<li>Your exact rate is settled when we bring you on.</li>
+</ul>
+<p>A typical install runs <strong>3–4 hours</strong> — the rate is set so booking multiple jobs in a day is worth your while.</p>
+<h3 id="scheduling">Scheduling</h3>
+<ul>
+<li>We book you with roughly <strong>48–72 hours' notice</strong> (2–3 days).</li>
+<li>Give us your general availability so we can slot jobs against it.</li>
+<li>The more reliably you can take bookings, the more work we can send your way.</li>
+</ul>
+<h3 id="who-brings-what">Who brings what</h3>
+<p>The split is simple, and we make it explicit up front.</p>
+<ul>
+<li><strong>We provide</strong> all the systems and equipment for the job.</li>
+<li><strong>You bring</strong> your own tools and the install materials.</li>
+</ul>
+<p>The full kit list — materials, sizes, and equipment pickup — is in <a href="#02-before-the-job-md" class="ilink">Before the Job</a>.</p>
+<h3 id="the-google-review-bonus">The Google review bonus</h3>
+<ul>
+<li>Carry the Google <strong>tap cards</strong> we give you and ask happy customers for a review on site.</li>
+<li>You earn a small <strong>per-review bonus</strong> when a Google review <strong>names you as the installer</strong> or <strong>includes photos</strong>.</li>
+<li>The office tracks incoming reviews and reconciles the bonuses to your pay.</li>
+</ul>
+<hr />
+<p><strong>Related:</strong> <a href="#00-start-here-md" class="ilink">Start Here</a> (office contact), <a href="#02-before-the-job-md" class="ilink">Before the Job</a> (kit list), <a href="#03-field-sop-md" class="ilink">The Install SOP</a> (non-negotiables step detail), <a href="#10-quick-reference-md" class="ilink">Quick Reference</a>.</p><div class="pn"><a class="pn-a" href="#08-troubleshooting-callbacks-md">← Troubleshooting &amp; Callbacks</a><a class="pn-a next" href="#10-quick-reference-md">Quick-Reference Cheat Sheet →</a></div></article><article id="10-quick-reference-md" class="doc"><h1 id="quick-reference-cheat-sheet">Quick-Reference Cheat Sheet</h1>
+<p>The one-page field reference — the settings, specs, and non-negotiables you need at a glance on a job. This sheet doesn't repeat the step-by-step: work the install from <a href="#03-field-sop-md" class="ilink">The Install SOP</a> and the programming from <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>.</p>
+<h2 id="non-negotiables-skip-one-earn-a-callback">Non-Negotiables — skip one, earn a callback</h2>
+<p>The same six lines as <a href="#09-standards-and-working-with-us-md" class="ilink">Standards &amp; Working With Us</a>; <a href="#03-field-sop-md" class="ilink">The Install SOP</a> has the step detail.</p>
+<ul>
+<li><strong>Tie into the main BEFORE the water-heater tee</strong> — treats both hot and cold. After the tee = cold only, and the water heater keeps getting hard water.</li>
+<li><strong>Seat the bottom O-ring.</strong> Missing it leaks 100% of the time.</li>
+<li><strong>Install the brine-tank clip.</strong> Without it the line leaks and pops off.</li>
+<li><strong>Install the flow restrictor on the drain line.</strong> It limits regen waste to 50–60 gallons; skip it and every regen wastes hundreds.</li>
+<li><strong>Never run a regen cycle with the brine tank disconnected.</strong> Running to zero with an open port shoots water out.</li>
+<li><strong>Check every joint before you leave.</strong> No pinched rings, no backed-out rings.</li>
+</ul>
+<h2 id="valve-settings-by-tank-type">Valve Settings by Tank Type</h2>
+<p>Program on first power-up per <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>. The first regeneration is a startup step — run it with <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a> in front of you, never from here.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Standard</th>
+<th>XL</th>
+<th>Dual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capacity</td>
+<td>36,000 grains</td>
+<td>42,000 grains</td>
+<td>48,000 grains</td>
+</tr>
+<tr>
+<td>Primary backwash</td>
+<td>6 min</td>
+<td>10 min</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Secondary backwash</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Regeneration time</td>
+<td>2:00 a.m.</td>
+<td>2:00 a.m.</td>
+<td>2:00 a.m.</td>
+</tr>
+<tr>
+<td>Max days for regen</td>
+<td>28</td>
+<td>28</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Water hardness</td>
+<td>Tested GPG (work order)</td>
+<td>Tested GPG (work order)</td>
+<td>Tested GPG (work order)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notes that keep the table honest:</p>
+<ul>
+<li>These are <strong>programmed regen setpoints</strong>, deliberately below the tank's rated capacity (rated: Standard 48,000 / XL 64,000 / Dual 96,000 grains). <strong>Never program the rating.</strong></li>
+<li><strong>Hardness = the tested GPG on the work order</strong> — never the factory default of 10. Over 30 GPG → set max days ~14; under 25 GPG → 28. Work order missing the number? Test on site or call the office — don't guess.</li>
+<li>Secondary backwash: always <strong>3</strong>, every system.</li>
+<li><strong>Menu order (per <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>):</strong> time → date → capacity → primary backwash → secondary backwash → regen time (2:00 a.m.) → max days → hardness. Screen order can vary — the hardness screen sits just under Capacity and may come up early; set each value when its screen appears.</li>
+<li><strong>Backing out of the menu (two Back presses) launches a regen</strong> — see <a href="#06-startup-testing-verification-md" class="ilink">Startup &amp; Testing</a> before you do.</li>
+</ul>
+<p><strong>Well dual-tank flag:</strong> the Katalox Light tank (the first/right tank) takes the <strong>downflow / air-injection valve</strong>, not the city valve. Verify the labeled valve is on the correct tank before install. Not 100% sure which valve goes where? <strong>Call the office before you install — don't guess.</strong> See <a href="#04-valve-programming-md" class="ilink">Valve Programming</a>.</p>
+<h2 id="orientation-cheats">Orientation Cheats</h2>
+<ul>
+<li><strong>Flow meter:</strong> long side IN, arrows IN.</li>
+<li><strong>Basket:</strong> four grooves → click.</li>
+<li><strong>Pipe ends:</strong> 90 + ring, every time.</li>
+<li><strong>Pipe:</strong> curved road pipe, gentle curve; <strong>never force a fitting against the ring</strong> — rubbing pushes the clip out.</li>
+<li><strong>Plate:</strong> screws, skip the bottom two (pipe holds that side).</li>
+<li><strong>Bypass:</strong> arrow in / arrow out; keep fully open or fully closed (pressure only, not softness).</li>
+<li><strong>RO faucet:</strong> both rubber gaskets; spout swivels, base fixed; hand-tightens clockwise.</li>
+</ul>
+<h2 id="install-day-gotchas">Install-Day Gotchas</h2>
+<ul>
+<li><strong>Hand-check the wall cavity before cutting</strong> — line, tee, and wall material in one move.</li>
+<li>Bring the <strong>right faucet color and right RO type</strong> — the top two go-back causes.</li>
+<li><strong>Power the RO on while it's still out in the open</strong>, then leak-check before tucking.</li>
+<li><strong>Never cut the RO faucet line short</strong> — slack on every line, most on the faucet, so the unit can be pulled for service.</li>
+<li><strong>Galvanized pipe (older IA/IL homes):</strong> soft water leaches metal off it — flag it to the customer, recommend repipe where feasible.</li>
+<li><strong>~120 PSI at the home</strong> → needs a pressure regulator (flag it; not our system's job).</li>
+</ul>
+<h2 id="key-dimensions-specs">Key Dimensions &amp; Specs</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flow rate</td>
+<td>28 GPM</td>
+</tr>
+<tr>
+<td>Main water line</td>
+<td>1 inch through-and-through</td>
+</tr>
+<tr>
+<td>Distributor tube</td>
+<td>1.25" (→ 28 GPM, no pressure loss)</td>
+</tr>
+<tr>
+<td>RO waste ratio</td>
+<td>2:1</td>
+</tr>
+<tr>
+<td>Standard tank</td>
+<td>rated 48,000 grains — program 36,000 (valve table above)</td>
+</tr>
+<tr>
+<td>XL tank</td>
+<td>rated 64,000 grains — program 42,000</td>
+</tr>
+<tr>
+<td>Dual tank</td>
+<td>rated 96,000 grains total (48k resin + 48k carbon) — program 48,000</td>
+</tr>
+<tr>
+<td>Media tank</td>
+<td>10" × 54" or 12" × 52" depending on configuration — check the work order</td>
+</tr>
+<tr>
+<td>Carbon tank</td>
+<td>10" diameter × 60" tall</td>
+</tr>
+<tr>
+<td>Tankless RO unit</td>
+<td>16" H × 5.5" W × 17" L</td>
+</tr>
+<tr>
+<td>RO supply-line stub</td>
+<td>pokes through ~¼" on the countertop</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Core components:</strong> ProValve control valve (ceramic disc), fiberglass NSF tank, Jacobi coconut carbon (activated on city, catalytic on wells), ResinTech CG10 resin, well media = Katalox Light + catalytic carbon.</p>
+<h2 id="customer-talk-track-quick-answers">Customer Talk-Track (quick answers)</h2>
+<ul>
+<li><strong>Salt:</strong> 1 bag lasts 3–4 months; three at once = 9–12 months. Recommend three, not four (four can overflow). Any "for water softeners" salt — never pool salt. Running low is fine, <strong>never empty</strong>.</li>
+<li><strong>RO filters:</strong> change yearly, no tools; red flashing light = due; change all three together. Replacements come through our office (~$50 each, ~$150 for the set of three) — wrong big-box filters can damage the system.</li>
+<li><strong>RO reset:</strong> unplug 10 seconds, plug back in (auto-resets).</li>
+<li><strong>RO leak:</strong> turn the shutoff T tab sideways to cut water to the RO only.</li>
+<li><strong>"Water isn't soft" just after install:</strong> ~30 min to come into soft water (longer in two-story homes); the hot side may stay slightly hard a while as the old heater clears.</li>
+<li><strong>Noise / murky salt tank at night:</strong> normal — that's the regen cycle (the valve regenerates on demand, roughly once a month, around 2 a.m.) and the brine solution.</li>
+<li><strong>Drain-line freeze:</strong> no — it only carries water during regen, roughly once a month, so it sits empty almost all the time. Outdoor installs on hard-freeze nights: have the customer drip a faucet.</li>
+</ul>
+<p><strong>Related:</strong> <a href="#03-field-sop-md" class="ilink">The Install SOP</a> · <a href="#04-valve-programming-md" class="ilink">Valve Programming</a> · <a href="#08-troubleshooting-callbacks-md" class="ilink">Troubleshooting</a></p><div class="pn"><a class="pn-a" href="#09-standards-and-working-with-us-md">← Standards, Warranty &amp; Working With Us</a><span></span></div></article></main></div>
+<script>
+var IDX=[{"id": "00-start-here-md", "t": "start here \u2014 installer onboarding", "c": " start here \u2014 installer onboarding this guide is everything you need to install our systems to our standard: the equipment, the field process, valve programming, testing, handoff, and the common callbacks. you already know plumbing \u2014 this teaches you our systems and our standard . videos and diagrams two kinds of media slots are marked throughout the guide: \ud83d\udcf9 video \u2014 the step done live. \ud83d\uddbc diagram \u2014 the layout or step drawn out. core training videos are linked where they matter (the systems overview, the whole-home deep dive, valve programming, and the three water-test demos). a few slots still say link coming soon \u2014 don't wait on those; the written steps are complete on their own. onboarding checklist work it top to bottom \u2014 this is the whole path from here to your first booked job: read this page (5 min) read sections 1\u20137 \u2014 the systems, prep, the install sop, valve programming, the ro install, startup/testing, and customer handoff skim troubleshooting and keep quick reference on your phone for the job watch the training videos \u2014 the systems overview and whole-home deep dive (linked in the systems ) and the valve-programming walkthrough (linked in valve programming ) send us proof of license + insurance so we can clear you shadow an install \u2014 ask the office to schedule one complete your first install (we review the first one) cleared \u2014 we start booking you how this guide is organized the systems you'll install \u2014 what the equipment is and how it works before the job \u2014 tools, materials, the full kit list, and finding the main/shut-off the install \u2014 step-by-step \u2014 the field sop, start to finish valve programming \u2014 set up the control valve under-sink ro install \u2014 the drinking-water system startup, testing & verification \u2014 bring it online and prove it works customer handoff \u2014 walk the homeowner through it troubleshooting & callbacks \u2014 fix and prevent the common issues standards, warranty & working with us \u2014 the quality bar, pay, and scheduling quick-reference cheat sheet \u2014 the one-pager for the job site who provides what \u2014 the short version we provide all the systems and equipment, plus the pre-scheduled jobs. you provide your own tools and the install materials (pipes, 3/8\" lines, fittings, diamond bit) \u2014 the full kit list is in before the job . typical install runs 3\u20134 hours ; we book with a couple days' notice. pay, scheduling, and standards are in standards & working with us . questions on a job? call or text any time during an install \u2014 we'd rather answer a quick question than fix a callback. call/text: [office phone] email: [office email] anywhere this guide says \"call the office,\" it means this number. "}, {"id": "01-the-systems-md", "t": "the systems you'll install", "c": " the systems you'll install a plain-language tour of the whole-home water systems you'll be putting in \u2014 the parts, how water moves through them, and how the system types differ. read with your first job in mind. almost every first job is the standard city system \u2014 read that part closely; skim the well, h\u2082o\u2082, and salt-free types until a work order names one. \ud83d\udcf9 video: overview of the full system lineup and how each type fits a home \u2014 watch it here what a whole-home system actually is two separate things go into most homes, and they do different jobs. the whole-home unit sits at the main water line where water enters the house. it softens and filters everything going to every tap, shower, and appliance. the under-sink ro is a small separate system at the kitchen sink. it polishes the drinking and cooking water further. it's its own install \u2014 see ro install . softener vs. filter \u2014 not the same thing a softener removes hardness minerals (calcium and magnesium) and heavy metals through ion exchange with salt. a filter (the carbon in the tank, or the ro at the sink) removes chemicals, chlorine, contaminants, and odors. our standard whole-home unit does both in one tank: one media tank, mixed bed, two jobs. the main parts the control valve (provalve) the brain on top of the media tank \u2014 a ceramic-disc valve. demand regeneration: you program the home's hardness, and the valve counts gallons and regenerates based on actual usage \u2014 not a fixed timer. a max-days setting backstops low usage, so in practice it regenerates roughly monthly, at 2 a.m. 72-hour memory backup \u2014 a power blip won't wipe your programming. bypass included with every unit \u2014 it comes with the valve. never order bypasses separately. programming is covered in valve programming . here, just know it sits on top of the tank and controls flow and regeneration. the media tank the fiberglass tank that holds all the filtering and softening media. nsf-certified fiberglass. standard builds ship on a 10\"\u00d754\" or 12\"\u00d752\" tank depending on configuration \u2014 check the work order . (the unit is still commonly called a \"10\u00d754.\") the media inside the tank three materials, layered \u2014 order matters. tanks arrive pre-loaded from the factory; you never load media on site. carbon (jacobi coconut-shell) sits on top. water hits it first \u2014 it removes chlorine, chloramine, and chemicals, and protects the resin below. activated grade on city water; catalytic grade on wells. softening resin (resintech cg10) sits below the carbon \u2014 the ion-exchange resin that removes hardness. gravel sits at the bottom \u2014 it supports the media bed and anchors the distributor tube. why carbon goes above resin: chlorine breaks resin down fast. the carbon strips chlorine before the water ever touches the resin. the distributor tube the center tube that runs down the middle of the media tank. the bottom looks like a pine cone with tiny holes, anchored by the gravel. it's a 1.25\" tube \u2014 part of how the system holds ~28 gpm with no pressure loss. this is the return path: treated water comes back up through it to head into the house. the brine (salt) tank a separate tank that holds the salt, sitting next to the media tank \u2014 connected to the valve, but not the same vessel. the resin softens water by swapping hardness ions for sodium. when the resin is used up, the valve pulls brine from this tank to recharge it. that's regeneration. dimensions vary by build \u2014 confirm with the office if you need to verify a delivery. the under-sink ro (separate system) the drinking-water system at the kitchen sink. its own install ( ro install ), not part of the tank. two kinds: the tankless ro (hw800, 7-stage, compact, on-demand \u2014 needs electricity ) and the tank ro (5-stage, small storage tank \u2014 works without electricity). alkaline remineralizer: tankless only. the tankless ro has it built in. the tank ro does not \u2014 it takes a separate external alkaline filter, which is leak-prone; that's why we prefer the built-in. tankless ro waste ratio: 2:1 . add-ons you'll also see two add-ons show up on work orders \u2014 this is why the before the job kit list includes brass fittings. uv purifier (wells): a stainless reactor on the main line that disinfects bacteria and viruses with uv light \u2014 no change to taste or odor. 120v (needs an outlet), 1\" mnpt inlet/outlet. pre-system sediment filter: a 5-micron, 20\"\u00d74.5\" cartridge at the main entry \u2014 catches sand, silt, and rust before the tanks. common on wells and older infrastructure; cartridge swaps roughly every 6 months. \ud83d\uddbc diagram: labeled cross-section of the whole-home unit \u2014 valve on top, media tank with carbon over resin over gravel, distributor tube down the center, brine tank beside it, and the separate under-sink ro, with arrows showing the flow path \u2014 coming soon how the water flows through it follow the water and the whole thing makes sense. in: water enters the top of the media tank through the valve. down through carbon: chlorine and chemicals come out first, protecting the resin below. down through resin: ion exchange pulls out the hardness. through the gravel and up the center tube: water reaches the bottom, passes through the gravel, and travels back up the distributor tube. out to the house: soft, filtered water heads to every tap. drinking water: the kitchen tap gets a final polish at the separate under-sink ro. short version: in the top, down through carbon then resin, up the center tube, out to the house \u2014 drinking water finished at the ro. the system types you'll encounter most installs are the standard city setup, but you'll see all of these. standard whole-home + ro (city) the most common install by far. one media tank (softener + filter combined), a brine tank, and the under-sink tankless ro for drinking water. rated 48,000 grains , roughly 28 gpm . the capacity you program at the valve is a lower regen setpoint \u2014 use valve programming 's settings table, never the rated number. fits a standard city home \u2014 up to about 6 people, 4 bathrooms or fewer"}, {"id": "02-before-the-job-md", "t": "before the job \u2014 prep & what to bring", "c": " before the job \u2014 prep & what to bring everything that happens before you cut a single pipe: how the equipment reaches you, what to carry, what every site needs, and the install types you'll run into. this section owns the packing list \u2014 when any other section mentions parts or tools, this is the list it means. who provides what we hand you the equipment. you bring the trade skills, your own tools, and the raw install materials to tie it in. we provide (per job): the whole-home softener \u2014 control valve, media tank, brine tank. the under-sink ro drinking system \u2014 filter bank and faucet. the small parts \u2014 brine-tank clip, o-rings, basket, overflow fitting, and the flow restrictor gasket (comes in the white box). one 40 lb bag of softener salt \u2014 pour it into the brine tank at handoff and leave the empty bag so the customer knows what to buy. ! the flow restrictor is a must-install, not a spare. the donut-shaped rubber gasket goes on the drain line and limits regeneration waste to 50\u201360 gallons \u2014 skip it and every regen wastes hundreds of gallons. the install step is in the install sop 's drain phase. you bring (your tools): sawzall \u2014 cuts the wall opening when there's a board behind the sheetrock. drywall saw \u2014 for a clean sheetrock-only cut. milwaukee reamer \u2014 deburrs cut pipe ends. crimper \u2014 for the fittings. diamond drill bit \u2014 1/2\" or 5/8\" \u2014 for drilling the countertop (granite/quartz) for the ro faucet hole. which size our faucet shank needs: confirm with the office before your first ro job. you supply (install materials): pipe \u2014 including curved \"road\" pipe for gentle bends off the valve. 3/8\" lines. cpvc for the drain run (rated for pressure and hot water). fittings, 90s, and rings. saddle valve / clamp. thread tape (blue monster) and pipe dope. brass fittings if the work order includes a uv purifier or pre-sediment filter (see the add-ons in the systems ). sizes and quantities: confirm your standard kit with the office on your first pickup \u2014 don't guess at diameters or counts. test kit: final verification ( startup & testing ) needs a hardness drop test, a chlorine test, and a tds meter. who supplies the kit and who replaces used reagents: confirm with the office. getting the equipment systems and equipment are picked up at our warehouse \u2014 the location is on the work order. if anything ships freight instead: inspect the pallet, photograph all sides, and document any damage before anyone signs \u2014 you or the homeowner. a signed-for damaged tank is an unclaimable damaged tank. the work order also carries the system configuration and the home's tested hardness (gpg). if either is missing, call the office before job day. verify before you leave the truck confirm you have every part and every tool before you start \u2014 check it yourself, don't assume the warehouse packed it right. finishing details eat the most time on a job, so keep extras of everything on the truck. a missing clip or fitting kills an install mid-job. the 3 things every install needs a site is installable when all three are accessible. if any one is missing or unreachable, the job changes \u2014 or it's not a job yet. main water line \u2014 to tie the system into. drain \u2014 to carry water out during regeneration. power source \u2014 a standard outlet. ! septic (well/country homes): never route the regen drain into a septic tank \u2014 the salty regen water kills the tank's bacteria. run it outside instead, about 3 ft underground in a flowerbed. if a septic customer asks about drain routing beyond that, call the office \u2014 don't freelance local discharge rules. if all three are accessible, it's installable. the install type comes down to where the main line is exposed. locating the main line and shut-off valve where the shut-off valve sits determines the install type, so pin it down first \u2014 ideally before you're on site. the main is only ever in about three places: garage / indoor \u2014 on the wall, by the softener loop, or behind an access panel. flowerbed / yard \u2014 in an in-ground box. city / street \u2014 in the meter box at the curb. \ud83d\uddbc diagram: common main-line / shut-off locations \u2014 garage wall vs. flowerbed box vs. street meter box \u2014 coming soon what you'll actually find new builds \u2014 the shut-off valve is usually in the garage or the laundry room . older homes \u2014 probably no dedicated loop at all; at best a bare shut-off valve in the garage . watch for galvanized pipe \u2014 soft water leaches metal off it. flag it to the customer and recommend a repipe where feasible. a dedicated softener loop is the exception, not the rule \u2014 most homes don't have one unless it was built in when the house went up. don't assume a clean garage loop is waiting for you. reading the training photos in the install-module photos, the water loop / shut-off valve is at the top of the frame. look there first when matching a real site to a training example. on site locate the main water shut-off \u2014 typically behind the access panel \u2014 and check the pipe size before you plan anything. then reach into the wall cavity by hand: feel where the line tees off to the water heater and feel the wall material. that one move tells you the line location, the tee location, and whether there's a board behind the sheetrock \u2014 all before you cut a single hole. that tee is the job's most important landmark: you tie into the main upstream of it \u2014 the full golden rule opens the install sop . install-type variations you'll see the type is set by where the main line is exposed. know these before you quote or walk in. type when the main line is\u2026 what we do basement install exposed in the basement tie in at the exposed basement line. garage shut-off / loop exposed in the garage tie in at the garage loop \u2014 the standard, cleanest install. attic tie exposed in the attic above the garage cut the line in the attic and route it down into the garage. side of house exposed on the side of the home cut the line and place the system on the side of the house. side entry in the flowerbed or yard trench from the main to the g"}, {"id": "03-field-sop-md", "t": "the install \u2014 step-by-step (field sop)", "c": " the install \u2014 step-by-step (field sop) this is our core install sequence for the whole-home softener: ten phases, run in order, every job. by the end of this section the system is fully plumbed and mounted, the bypass is in bypass, and the main water is back on. programming ( valve programming ) and startup ( startup & testing ) come after \u2014 nothing regenerates in this section. before you touch a wrench: the golden rule everything downstream depends on where you tie into the main. get this wrong and the job fails no matter how clean the rest of your work is. \ud83e\udd47 golden rule \u2014 tie into the main before the line tees off to the water heater. tie in before the water-heater tee \u2192 you treat both hot and cold . tie in after the tee \u2192 you treat cold only \u2014 the water heater keeps getting hard water. find the tee before you cut anything, and make sure your tie-in sits upstream of it. \ud83d\uddbc diagram: the main line entering the house, the tee splitting off to the water heater, and the correct tie-in point marked upstream of that tee \u2014 coming soon the water sequence \u2014 off, bypass, back on the whole section runs on one water sequence. know it before phase 1: the main goes off before you cut into the line \u2014 you locate the shutoff in phase 1. the unit is plumbed in with the bypass valve in bypass . once your tie-in is complete and the joints are checked, the main goes back on \u2014 in bypass, the house gets full city water at full pressure, just unsoftened, so the customer isn't without water while you finish. eyeball the tie-in joints as pressure returns \u2014 re-checking your own joints is what keeps you off return calls. the system stays in bypass until startup & testing startup . the bypass is fully open or fully closed, never in between \u2014 it controls pressure, not softness. never run a cycle in this section. the first regeneration happens in startup & testing , after the valve is programmed in valve programming . the tanks arrive ready every tank is assembled and media-loaded at our factory in fort worth . there is no on-site media loading \u2014 ever. if a tank arrives looking unloaded or damaged, stop and call the office. whether the brine tank takes an initial water fill before the first cycle isn't covered here \u2014 confirm with the office before your first job. phase 1 \u2014 job setup & wall assessment set yourself up so nothing stops the job halfway through, and learn the wall before you cut it. confirm parts and tools first check that you personally have every part and tool before starting. don't trust the warehouse pull \u2014 verify it yourself. find the main and read the pipe locate the main water shutoff , typically behind the access panel \u2014 this is what you close before cutting in. check the pipe size so you know what you're tying into. plumbing type is usually pex . if the main is copper or galvanized, call the office before you cut \u2014 the tie-in method below assumes pex. clear the work area and set up a flat staging surface in the garage. reach into the wall by hand before any cutting, reach into the wall cavity by hand and confirm three things: where the line tees off to the water heater \u2014 so you honor the golden rule. the wall material \u2014 a board behind the sheetrock means you'll need a sawzall , not just a drywall saw. the plumbing type . line location, tee location, and wall material \u2014 all known before you make a single hole. no surprises mid-cut. phase 2 \u2014 plan the drain decide where the softener drains and how you'll run the pipe before you start fitting anything. where to tie the drain tie into the water heater's tpr (temperature/pressure relief) drain \u2014 that's our standard. if your local code doesn't allow tying into the tpr discharge, stop and call the office before improvising. know the pressure difference: the tpr drain is pressurized ; the softener system is not (it runs on its own pressure only). use cpvc for the drain run \u2014 it's rated for both pressure and hot water. fitting philosophy use the fewest fittings possible \u2014 every fitting is a potential leak point. favor vertical over horizontal . if a fitting ages out, gravity helps you rather than working against you. horizontal is acceptable, not ideal. \ud83d\uddbc diagram: the softener drain routed to the water-heater tpr drain \u2014 clean vertical run with minimal fittings vs. a messy horizontal run \u2014 coming soon phase 3 \u2014 assemble the control head & bypass build up the control head with the small parts that cause guaranteed callbacks if they're missed. the components bypass valve, control valve, head, and tails. the two parts you cannot skip seat the bottom o-ring \u2014 mandatory. miss it and it leaks 100% of the time. install the brine-tank clip that secures the tube \u2014 miss it and the line leaks and pops off, which means a callback. keep the clip and other small parts in a side pocket so they don't get lost on the job. basket and fittings install the basket : line up the four grooves until it clicks. seat every fitting fully \u2014 lube if you have it, push until it pops, then turn with real muscle. verify tightness and re-seat anything that feels loose. phase 4 \u2014 saddle valve & flow components set the flow components and check that nothing is pinched before you move on. install the saddle valve/clamp and tighten it. inspect every ring and fitting \u2014 nothing pinched, popping out, or misaligned. a pinched ring will work its way out and leak . flow meter orientation: long side in , and the arrows point in . if it's unclear which line the saddle valve or flow meter goes on for your build, call the office \u2014 don't guess . phase 5 \u2014 drain threading & flow restrictor seal the drain threads and install the one part that saves hundreds of gallons per regen. thread sealing apply thread tape plus pipe dope to the drain threads. not strictly required since the drain isn't pressurized \u2014 but better safe. blue monster tape technique: wrap the threads, then run your fingers over them and twirl. when the lines darken, the tape has caught. install the flow restrictor \u2014 non-negotiable the flow"}, {"id": "04-valve-programming-md", "t": "valve programming", "c": " valve programming the physical install is done: the system is plumbed in, sitting in bypass, and the main water is back on ( the install sop ). now program the control valve (the provalve) so the softener knows how big it is, how hard the water is, and when to clean itself. this section is programming only \u2014 the first regeneration is a startup step, covered in startup & testing . \ud83d\udcf9 video: full valve-programming walkthrough on first power-up, showing each menu screen \u2014 watch it here before you start the valve does the work automatically once it's set. your job here is to enter the right numbers. three things to know going in: the valve runs demand regeneration \u2014 programmed with the home's hardness, it counts gallons and regenerates based on actual usage, not a fixed schedule. you set the regeneration time to 2:00 a.m. and a max-days backstop so it self-cleans even in a low-usage home. net effect: roughly one regen a month, at 2 a.m., in normal use. the single most important number is water hardness , and it comes off the work order \u2014 the office tested the home's water and put the gpg on your paperwork. get it wrong and you get hard-water breakthrough and a callback. settings by tank type enter these values based on the tank you installed. setting standard xl dual capacity 36,000 grains 42,000 grains 48,000 grains primary backwash 6 min 10 min 10 min secondary backwash 3 3 3 regeneration time 2:00 a.m. 2:00 a.m. 2:00 a.m. max days for regen 28 28 28 water hardness tested gpg (work order) tested gpg (work order) tested gpg (work order) on the capacity figures these are programmed regeneration setpoints , set conservatively so the system regenerates in time. they are not the tank's rated capacity \u2014 standard is rated 48,000 grains, xl 64,000, dual 96,000 total. never program the rating. on secondary backwash always 3, on every system, regardless of tank type. the settings sheet doesn't state the unit \u2014 confirm with the office rather than assuming minutes. on max days for regen 28 is the default and works for most installs. tune it by hardness: above 30 gpg, drop it to around 14 days; below 25 gpg, keep it at 28. on water hardness \u2014 never leave the factory default of 10 program the tested gpg from the work order . the factory 10 is a dallas-area habit (dfw rarely tops 10\u201312 gpg). iowa and illinois water routinely runs 15\u201340+ gpg \u2014 an undersized setting under-regenerates, and the customer gets hard water back. work order missing the number? run the hardness test on site or pull the local water company's report; if neither is possible, call the office. do not guess, and do not leave it at 10. programming steps the menu screens follow one another \u2014 enter a value, press down, move to the next. one menu note: the hardness screen sits just under capacity, so it may come up earlier in your walk-through than this list shows. set each value when its screen appears; what matters is that everything in step 11 is set before you leave the menu. 1. power on the valve boots to the main screen. 2. open the menu press the first button (menu). 3. set the time \u2014 one minute ahead set the clock one minute ahead of the actual time. shop habit, every install. 4. set the date 5. set the capacity standard 36,000 / xl 42,000 / dual 48,000 grains. press down to continue. 6. set the primary backwash time standard: 6 minutes. xl and dual: 10 minutes. 7. set the secondary backwash always 3, on every system. 8. set the regeneration time 2:00 a.m. 9. set the max days for regen default 28. adjust by hardness if needed (see the settings table above). 10. set the water hardness enter the tested gpg from the work order. never leave it at 10. 11. confirm your entries you should now have set: time, date, capacity, primary backwash, secondary backwash, regeneration time (2:00 a.m.), max days for regen, and water hardness. 12. stop \u2014 do not start the regen from here backing all the way out of the menu (two presses of back) launches a regeneration. the first regeneration is a startup step with its own bypass sequence \u2014 run it with startup & testing in front of you. well-water dual-tank valve (downflow / air injection) well-water dual-tank systems use a different valve on the first tank than the city units do, even though the tank looks the same. get this right at unboxing. what's different the katalox light tank \u2014 the first tank, on the right \u2014 takes a downflow valve programmed for air injection . it injects oxygen into the tank, turning dissolved iron into rust so it can be filtered out. how to identify it the correct valve is labeled differently \u2014 look for \"well water,\" \"downflow,\" or \"katalox valve.\" verify the correct valve is on the correct tank before you start. if you're not sure the right downflow valve ships with these orders, so the parts on the truck should be correct. not 100% certain which valve goes where? stop and call the office before you install \u2014 contact info is in the start here contact block; support is available 7 days a week. don't guess. where this leaves you every setting is entered and the system is still in bypass. next: startup & testing \u2014 run the first full regeneration and bypass sequence, leak-check, and test the water. related: the install sop \u00b7 startup & testing \u00b7 quick reference "}, {"id": "05-ro-install-md", "t": "under-sink ro install", "c": " under-sink ro install this section covers the under-sink reverse-osmosis drinking system \u2014 the faucet, the unit, the storage, and the leak check \u2014 so you install ours the same way every time and never leave a slow leak behind a cabinet. what you're installing the ro is a separate drinking-water system that lives under the kitchen sink and feeds a dedicated faucet on the counter. it is independent of the whole-home softener \u2014 its own supply tap, its own filter bank, its own drain connection. two versions ship, depending on the job: hw800 alkapro tankless ro \u2014 the standard on most city bundles. 7-stage, 800 gpd, on-demand (no storage tank), with a built-in alkaline remineralizer and auto-flush. finished water comes out around 8.5\u20139.0 ph. needs electricity. tank ro \u2014 a steel-shell storage tank with a food-grade butyl bladder that pressurizes ro water for steady faucet flow. works without electricity. no built-in alkaline stage \u2014 remineralizing takes a separate external add-on filter. both strip contaminants down through the membrane; only the tankless unit adds healthy minerals back natively (on a tank ro that's an external add-on filter). the tankless unit filters down to 0.0001\u00b5m , and its nsf thin-film ro membrane runs 95\u201399% rejection on tds, heavy metals, microplastics, pfas, and bacteria/viruses. \ud83d\uddbc diagram: under-sink ro layout \u2014 dedicated faucet up through the counter, the ro unit and (if tank) the storage tank inside the cabinet, the drain connection, and the cold-water supply tie-in with the shutoff t \u2014 coming soon filter stages on the tankless unit, three replaceable filters sit behind a removable magnetic faceplate. water moves through them in order: pre-carbon \u2014 the large fridge-style filter; first-stage carbon. ro membrane \u2014 the fine membrane that removes everything. post-carbon with built-in alkaline remineralizer \u2014 final polish that adds minerals back. a tank ro has no built-in alkaline stage \u2014 it takes an external add-on filter instead, and those external filters are a known leak point. know which unit you're on before you quote a filter change. \ud83d\udcf9 video: the three ro filters behind the magnetic faceplate, in flow order \u2014 link coming soon plan the sink first before you drill anything, assess the sink and plan the whole layout. tankless ro: confirm a usable outlet in the sink cabinet before you start. the hw800 needs electricity. no outlet \u2192 call the office before starting \u2014 don't drill a countertop for a unit you can't power. confirm whether the sink already has a spare hole for the drinking faucet. a new dedicated faucet hole often needs to be drilled. check the countertop material. granite and quartz are harder to drill \u2014 that's what the 1/2\"\u20135/8\" diamond bit in your kit ( before the job ) is for. plan the layout for symmetry \u2014 the ro unit on one side of the cabinet, the faucet run on the other. map where the tubing and any wiring will run behind the fixtures so no line ends up under tension. lines under constant tension leak. drill the faucet hole drill the dedicated faucet hole through the countertop. granite and quartz take the diamond bit and extra time \u2014 plan for it. once the hole is through, the faucet supply line pokes up about \u00bc\" above the countertop so the faucet seats cleanly. mount the faucet the drinking faucet mounts through the fresh hole and seals from both sides. install it with both rubber gaskets. the cover disc is larger than the gasket rings, so there's no leak path around it. the spout swivels; the base stays fixed. it hand-tightens clockwise \u2014 no wrench needed. seat it snug so it doesn't spin loose, but this is a hand-tight fitting. run the tubing route every line behind the fixtures and leave yourself room to service the unit later. keep all tubing behind the fixtures , never pulled tight. a line under tension is a future leak. leave slack on every line \u2014 the most slack on the faucet line. never cut the faucet line short. the slack is what lets you pull the whole unit out of the cabinet for a filter change or service. \ud83d\udcf9 video: routing tubing behind fixtures and leaving service slack, most on the faucet line \u2014 link coming soon tie into the supply and add the shutoff t tie the ro into the under-sink supply and give the homeowner a way to isolate it. install a shutoff t at the ro tie-in per the unit's instructions. if the ro ever leaks, the homeowner turns the tab to cut water to the ro without shutting off the whole sink. point out the shutoff t during the customer handoff walkthrough \u2014 it's the homeowner's first move on any ro leak. drain connection the ro's reject water needs a drain path under the sink. the exact connection method isn't documented in this guide yet \u2014 confirm the shop-standard drain procedure with the office before job day. don't improvise one on site. the storage tank (tank ro only) if the job is a tank ro rather than the tankless hw800, the storage tank sits in the cabinet: it's a steel shell with a food-grade butyl bladder that stores and pressurizes ro water for steady flow. it fits under most kitchen sinks and works without electricity. the tankless hw800 has no storage tank at all \u2014 it's on-demand. power on, flush, and leak check do this with the unit still out in the open \u2014 do not tuck anything into the back of the cabinet yet. turn the water on and confirm flow through the system. power the ro on while it's still exposed. air escaping is a good sign \u2014 it means the unit is priming all filters to drain. the system self-primes and flushes: the drain kicks and the water clears. there is no run-in time required before the water is drinkable \u2014 it primes electronically. watch every fitting for leaks while everything is still visible. a leak you miss here becomes a hidden slow leak the customer finds weeks later. only after the leak check passes do you tuck the unit and the lines neatly to the back of the cabinet. \ud83d\udcf9 video: powering the ro on while exposed, air/drain kick, and the leak check before tucking \u2014 link coming soon fridge li"}, {"id": "06-startup-testing-verification-md", "t": "startup, testing & verification", "c": " startup, testing & verification bring the system online, run the mandatory first regeneration, prove everything is dry under real flow, and verify the results with water tests \u2014 then run the final checklist before the customer walkthrough. where you should be don't start this section until all three are true: the install sop complete: system fully plumbed and mounted, bypass valve in bypass , main water back on, house repressurized, tie-in joints checked dry. valve programming complete: valve programmed \u2014 hardness, regen time, max-days, clock. ro install complete (ro jobs): ro installed, leak-checked out in the open, then tucked. do the steps below in order. never skip verification \u2014 a problem caught now is a five-minute fix instead of a return call. startup checks confirm the clock the unit resumes on re-plug, and a correct clock is what keeps gallons-remaining and the regeneration schedule accurate. confirm the display clock reads the way valve programming 's programming left it. confirm the regeneration programming the valve runs demand regeneration \u2014 programmed with the home's hardness, it counts gallons and regenerates based on actual usage. the max-days setting is a backstop that forces a self-clean even in a low-use home. net effect: roughly monthly, at 2 a.m., while the customer sleeps. never set or describe it as a fixed monthly timer. verify against valve programming (programming lives there \u2014 this is a check, not a re-teach): hardness = the tested gpg on the work order . you weren't at the sales test \u2014 the office puts the number on the work order. if it's missing, call the office or run the hardness drop test below on untreated water before trusting any number. regen time = 2:00 a.m. max-days backstop set per valve programming 's table (14\u201328 days depending on hardness). confirm brine and drain before any cycle ! never run a cycle with the brine tank disconnected. running the system to zero with no brine tank shoots water straight out the open port. brine line connected, clip in place. drain line connected and routed out, flow restrictor installed ( the install sop ). bring it into service \u2014 the first regeneration do not put the system into service straight off the truck. the first thing the softener does on your install is a full manual regeneration/backwash . why it's mandatory the first regen rinses the carbon media's fines and dust out to drain and settles the media in the tank. skip it and the carbon underperforms from day one because the fines never rinse out. run it open the bypass slowly from bypass into the service position. once open, leave it fully open \u2014 fully open or fully closed, never in between. kick off the initial regeneration/backwash and let it run fully to completion. stay with the unit while it cycles \u2014 this is your leak check under real flow. \ud83d\udcf9 video: starting a manual regeneration on the control head, and what a healthy backwash looks and sounds like \u2014 link coming soon leak-check under regeneration flow you already leak-checked the ro in the open ( ro install ). now check the softener and every joint you touched while the regen is running and the system is under its own flow. re-check every joint \u2014 no pinched or backed-out rings. a pinched ring works its way out and leaks later \u2014 re-seat it now. never leave a fitting forced against a ring \u2014 rubbing pushes the clip out. confirm brine tank, drain, bypass, and shutoff t are all connected and correctly oriented. catching a weep now prevents the hidden slow leak the customer finds weeks later. give the home time to come into soft water allow roughly 30 minutes for the house to come fully into soft water while the residual hard water in the lines clears \u2014 longer in two-story homes. this matters for the hardness test below: the cold supply can read high right after startup simply because old water is still flushing through. post-install water tests now prove the system delivers. the rule that trips up new installers is what you test where \u2014 get it wrong and a working system looks like a failed install. test kit: hardness vial + solutions 1 & 2, chlorine vial + reagent, tds meter. confirm with the office who supplies the test kit and replaces used reagents before your first job. the one rule to memorize whole-home (softened) water: test hardness (chlorine optional). never test tds here. ro faucet water: test tds only. a softener does not lower tds, so a tds reading on whole-home water barely moves after install \u2014 it looks broken even though it's working perfectly. tds only drops on water that has passed through the ro. hardness test \u2014 cold supply test the cold supply \u2014 the hot side can carry residual hardness from the old water heater. tools: hardness vial, solution 1 (indicator), solution 2 (titrant), cold faucet water. fill the vial with cold water to the \"1 grain per gallon\" line . add 7 drops of solution 1 , cap, and shake. add solution 2 one drop at a time , counting, until the color turns. how to read it: turns blue immediately, never pink = 0 gpg . that's your pass. if it goes pink first, the number of solution 2 drops to turn it blue = grains per gallon. you want 0 . \ud83d\udcf9 video: running the hardness titration and reading the blue-immediately endpoint \u2014 watch it here two things so a good install doesn't read as a failure: old water heaters may briefly show ~2 gpg on the hot side \u2014 that's residual, not a bad install. test the cold supply. a full hardness retest at the customer's faucet is best done about a month out \u2014 residual hardness in the supply lines and water heater needs time to flush, or the cold side can still read high right after install. chlorine test (optional) optional at post-install, but useful to confirm the carbon is working. tools: chlorine vial, chlorine reagent, faucet water. fill the vial to the 10 ml line . add 5\u201310 chlorine drops and watch the color develop (yellow \u2192 dark yellow \u2192 brown; darker = more chlorine). post-carbon, you want a noticeably lighter result than the pre-install r"}, {"id": "07-customer-handoff-md", "t": "customer handoff", "c": " customer handoff the last twenty minutes on site. walk every stop below at the equipment, out loud, and let the customer ask questions \u2014 this list is what prevents the avoidable callbacks and earns the review. two things you physically leave behind the complimentary 40 lb bag of salt \u2014 pour it into the brine tank at install, and leave the empty bag so the customer knows what to buy. the owner's quick guide (appendix below) \u2014 print it or text it, and hand it to the customer before you leave. it's what they'll reach for in three months when the salt runs low. \ud83d\udcf9 video: a full model handoff \u2014 tech walking a homeowner from the softener to the ro faucet, hitting every stop below \u2014 link coming soon the walkthrough \u2014 five stops, in order the owner's quick guide (appendix) carries the exact customer wording \u2014 don't recite from memory. at each stop, point at the hardware, cover the matching quick guide section out loud, and hit the notes below. stop 1 \u2014 softener and salt (the tall tank) cover the quick guide sections \"your softener\" and \"salt \u2014 the only thing you do\" in full. say the health reassurance out loud \u2014 the salt never enters their drinking water; it only rinses the system, like an oil change. it heads off the most common worry. point out the clock \u2014 correct time keeps the cleaning schedule and gallons tracking accurate. if it ever resets after a power outage, they call us. if they ask about the cleaning cycle: it regenerates automatically based on their usage \u2014 roughly monthly, at 2 a.m. it's not a fixed timer. \ud83d\uddbc diagram: the brine tank with the fill line marked \"keep 2\u20133 bags,\" and a note that murky water is normal \u2014 coming soon stop 2 \u2014 bypass and main shutoff (at the valve) cover the quick guide section \"two valves to know.\" fully open or fully closed, never in between \u2014 the bypass controls pressure only, not softness. have the customer put a hand on the main shutoff once \u2014 the bypass location is their whole-home kill switch for any plumbing emergency. \ud83d\uddbc diagram: the bypass valve in \"open\" vs \"bypass (to the side)\" positions, labeled \u2014 coming soon stop 3 \u2014 ro faucet (at the kitchen sink) cover the quick guide section \"your drinking-water faucet.\" do not skip: the 10-second reset (unplug 10 seconds, plug back in \u2014 it auto-resets) and the yearly filter change (red flashing light = due; change all filters together). physically show the shutoff t behind the unit \u2014 sideways cuts water to the ro only \u2014 and the faucet action (spout swivels, base fixed, hand-tightens clockwise). stop 4 \u2014 what to expect cover the quick guide section \"good to know.\" set the timeline: soft water in ~30 minutes , longer in two-story homes. drain line: it only carries water during regeneration \u2014 roughly once a month \u2014 so it sits empty almost all the time. it's bracketed to the wall and won't freeze; outdoor installs drip a faucet on hard-freeze nights. pressure is unchanged \u2014 the softener installs after the prv, and we don't adjust the prv. stop 5 \u2014 warranty, service, and the ask cover the quick guide section \"service & warranty.\" quote the tiers exactly: lifetime on the system's dry parts (mechanical parts that never touch water) \u00b7 5 years on the control valve, circuit board, and filtration media \u00b7 1 year on labor. year 1: all service visits free. after that: $199 annual service (we change the ro filters and check everything over) and a $199 trip charge for one-off visits. replacement ro filters come through us \u2014 the wrong big-box filters can damage the system. that's the reason, not a markup. then make the ask: a google review naming their technician means the world to a local company, and mention the $100 referral gift cards for friends and neighbors. appendix \u2014 owner's quick guide (leave with the customer) this is the customer-facing sheet and the canonical wording for the walkthrough above. hand it over as-is; do not add installer notes to their copy. welcome to soft, clean water! \ud83d\udca7 kind water co \u00b7 questions? message your install group chat or call us anytime. your softener (the tall tank in the garage) it cleans itself automatically based on your usage \u2014 roughly once a month, at 2 a.m. you may hear it; that's normal. no filters to change, ever. soft water arrives within ~30 minutes of installation (a little longer in two-story homes). salt \u2014 the only thing you do check the salt tank every 3\u20134 months . if it's low, pour in salt \u2014 keep it roughly 2\u20133 bags full (three, not four \u2014 four can overflow). any \"water softener salt\" works: crystals or pellets, the cheapest bag is fine (~$7 at home depot, lowe's, costco, tractor supply). never pool salt. treat it like a gas tank: running low is fine, but don't leave it empty \u2014 an empty tank long-term ruins the system's media (that's not covered by warranty). murky water in the salt tank is normal. that water never enters your home \u2014 it's just for cleaning the system. \u2764\ufe0f health note: the salt does not go into your drinking water \u2014 it only rinses the system (like an oil change). softened water adds almost no sodium. your drinking-water faucet (the ro under the kitchen sink) drink from it immediately \u2014 it's purified + remineralized (alkaline) water on tap. filters: change once a year \u2014 no tools, the housings are magnetic, instructions are on the unit. when a light flashes red , filters are due. we'll call you when it's time, or change them yourself. buy replacement filters through us \u2014 the wrong store-bought filters can damage the system. if the ro ever stops: unplug it for 10 seconds and plug back in \u2014 it resets itself. if it ever leaks: turn the shutoff t \u2014 the little t-handle valve behind the unit \u2014 sideways; that shuts off water to the ro only. then call us. two valves to know bypass valve (on the softener): turning it gives you full city water, unsoftened \u2014 use it if you're away for months or we ask you to. keep it fully open or fully closed , never in between. main shutoff: the same spot is your whole-house water shutoff \u2014 for any plumbing emergency (toilet, burst p"}, {"id": "08-troubleshooting-callbacks-md", "t": "troubleshooting & callbacks", "c": " troubleshooting & callbacks most callbacks aren't broken systems \u2014 they're normal break-in behavior. learn the field tells, prevent the avoidable callbacks on install day, and know the short list of situations that are genuinely a warranty claim. the mindset: lead with reassurance, not a truck a freshly installed system needs time to clear old water out of the home's pipes, and some first-week behavior (white particles from the ro's remineralization, residual hardness working out) is completely normal. before you schedule a return trip, work the symptom against the causes below \u2014 a short, confident explanation on the phone solves most first-week calls. find the symptom, then check causes in order. lead with the reassurance line before rolling a truck. if it's genuinely a fault, see \"when it is a warranty claim.\" softener symptoms \"the water isn't soft\" (just installed) work these in order \u2014 most land on cause 1 or 2. just installed. the home takes about 30 minutes to come into soft water as residual hard water clears the pipes. longer in two-story homes. hot water still a little hard. normal for a while. an old water heater is full of buildup, and soft water leaches it back out \u2014 expect roughly 2 gpg on the hot side, temporarily . test the cold supply , not the hot: titration drops that turn blue immediately mean 0 gpg, which means the system is working. out of salt. an empty brine tank means no regeneration, which means hard water. refill the salt and run a regeneration. resin does not just die \u2014 if it tested good past about 60 days, the failure is a lack of salt, not the equipment. hardness setting too low. confirm the valve is programmed to the tested gpg on the work order \u2014 the factory default setting (10) under-treats most local water, and a too-low setting lets hardness break through between regenerations. reprogram if needed ( valve programming ). genuinely dead within weeks. rare \u2014 this is a warranty path. see \"when it is a warranty claim.\" \"it regenerates every night\" the schedule got thrown off. a power outage can reset the days-to-regen counter to zero , so it cycles nightly. reprogram it ( valve programming ). an undersized old unit can also over-regenerate \u2014 relevant if you're servicing equipment that isn't ours. \"there's dirty water in the salt tank\" normal. that's the brine solution sitting in the tank, not the home's drinking water. it's supposed to sit there, and it can look murky. \"it makes noise at night\" normal. that's the regeneration and backwash cycle \u2014 think of it as a salt-water car wash. the valve regenerates on demand, roughly once a month in normal use, typically around 2 a.m. \"will the drain line freeze?\" (iowa/illinois winters) no. the drain line only carries water during regeneration \u2014 roughly once a month (the valve regenerates on demand) \u2014 so it sits empty almost all the time and is never stagnant. on a hard-freeze night with an outdoor install, tell the customer to drip a faucet as a precaution. \"the brine tank is overflowing\" usually too much salt \u2014 four bags can push water out the overflow. recommend keeping it around three bags . if salt level is fine, the overflow fitting may simply be doing its job. ro symptoms \"the ro stopped making water\" reset it first. unplug the unit for 10 seconds , then plug it back in. the built-in safety auto-resets. lights flashing red means a filter is due. change all filters together \u2014 the others are only days behind. standard service is all three filters every 12 months at the annual visit. no power. a tankless ro needs electricity \u2014 check the outlet and the gfci. (a tank ro still works without power.) \"the ro is leaking\" customer stopgap over the phone: have them turn the shutoff t sideways to kill water to the ro only. the rest of the house is unaffected. then schedule the visit. on the bench, the usual leak points are: lines under tension lines cut too short external add-on alkaline filters (this is why we prefer the built-in remineralization) \"the fridge ice/water has been weird since the install\" this is why we talk customers out of fridge tie-ins \u2014 pressure and communication issues make the outcome roughly a coin flip, and we only do one when the office has booked it. if a fridge was tied in, quirks like this are expected \u2014 offer to disconnect it if it keeps misbehaving. install-day gotchas (prevent the callback) most callbacks are prevented on the truck, not fixed later. build these into your routine on every job. tie in before the water-heater tee. tie in after it and you only treat the cold water \u2014 the water heater keeps getting hard water. hand-check the wall cavity first to confirm where you are in the run. never run a regen with the brine tank disconnected \u2014 water shoots out of the open port. power the ro on while it's still out in the open and leak-check it before tucking it back under the sink. pre-leak checklist (softener) run this before you call the job done \u2014 any one of these missed becomes a callback. seat the bottom o-ring. missing it is a 100% leak. install the brine-tank clip. missing it lets the line pop off. no pinched rings. flow restrictor on the drain. skip it and every regeneration wastes hundreds of gallons. well and site conditions well dual-tank: the katalox tank takes the downflow / air-injection valve . verify the labeled valve is on the correct tank before you install. not 100% sure which valve goes on which tank? call the office \u2014 don't guess. septic homes: never route the regen drain into the septic tank \u2014 the salty regen water kills the tank's bacteria. run it outside, about 3 feet underground in a flowerbed. galvanized pipes (older iowa/illinois homes): soft water leaches metal off galvanized pipe. flag it to the customer and recommend a repipe where feasible. high incoming pressure (around 120 psi): the home needs a pressure regulator . it's not our system's issue, but flag it for the customer. bring the right parts bring the right faucet color and the right ro type for the job. s"}, {"id": "09-standards-and-working-with-us-md", "t": "standards, warranty & working with us", "c": " standards, warranty & working with us what we expect on every job, what the warranty covers (so you install to spec), and the working arrangement \u2014 pay, scheduling, who brings what, and the review bonus. questions on any of it, or on a live job: call or text the office \u2014 contact info is in start here . our quality standards we hired you because you already know plumbing. what we need is that every kind water co install goes in the same way, to the same standard, every time \u2014 so the customer never has a reason to call us back. on time, clean, no corner-cutting show up when you said you would. if a booking changes, tell us with as much notice as you can. stage on a flat surface, clean up after yourself, and hand the home back better than you found it. never skip a step to save time. the finishing details take the longest \u2014 and that is exactly where callbacks come from. the non-negotiables skip any one of these and you earn a callback. this is the canonical list \u2014 the install sop has the step detail, and quick reference 's cheat sheet carries the same six lines. tie into the main before the water-heater tee \u2014 treats both hot and cold. after the tee = cold only, and the water heater keeps getting hard water. seat the bottom o-ring. missing it leaks 100% of the time. install the brine-tank clip. without it the line leaks and pops off. install the flow restrictor on the drain line. it limits regen waste to 50\u201360 gallons; skip it and every regen wastes hundreds. never run a regen cycle with the brine tank disconnected. running to zero with an open port shoots water out. check every joint before you leave. no pinched rings, no backed-out rings. \ud83d\udcf9 video: the six non-negotiables done right vs. the callback each one causes when skipped \u2014 link coming soon what the warranty covers you do not administer the warranty, but coverage only holds when the system is installed to our spec \u2014 so know the terms. the coverage tiers lifetime \u2014 system dry parts: the mechanical, non-consumable components that do not come into direct contact with water. 5 years \u2014 control valve, circuit board, and filtration media: defects in materials and workmanship under normal operating conditions. 1 year \u2014 labor: labor issues arising from the original installation, for one year from the date of purchase. storage and media tanks carry lifetime coverage separately, under the manufacturer's warranty. what voids it coverage is valid only when the system is installed, operated, and maintained to kind water co guidelines. it excludes damage from: improper installation. misuse, neglect, or unauthorized modifications. environmental factors \u2014 flooding, freezing, or contaminant levels beyond what the system is rated for. what this means for you. \"improper installation\" is the phrase that matters to an installer. if a system fails because a step was skipped or a part was left out, that is not a warranty claim \u2014 it is a workmanship problem, and it lands on the install. the sop and the non-negotiables above are what keep every job inside the coverage. replacement parts. parts replaced under warranty carry only the remainder of the original period \u2014 a repair does not reset the clock \u2014 and must be fitted by a kind water co-approved installer. customers file claims through our office (proof of purchase plus installation documentation). point anything warranty-related to the office rather than diagnosing coverage on site. licensing & insurance we work only with licensed, insured installers. before your first job, send us proof of your license and proof of insurance \u2014 we verify it before you go out. keep your coverage current. if it lapses, tell us before you take another booking. working with us \u2014 the basics pay per install you are paid per install, not hourly. $300\u2013$750 per install , depending on the system, the scope of work, and your experience. around $500 is typical for a standard job. your exact rate is settled when we bring you on. a typical install runs 3\u20134 hours \u2014 the rate is set so booking multiple jobs in a day is worth your while. scheduling we book you with roughly 48\u201372 hours' notice (2\u20133 days). give us your general availability so we can slot jobs against it. the more reliably you can take bookings, the more work we can send your way. who brings what the split is simple, and we make it explicit up front. we provide all the systems and equipment for the job. you bring your own tools and the install materials. the full kit list \u2014 materials, sizes, and equipment pickup \u2014 is in before the job . the google review bonus carry the google tap cards we give you and ask happy customers for a review on site. you earn a small per-review bonus when a google review names you as the installer or includes photos . the office tracks incoming reviews and reconciles the bonuses to your pay. related: start here (office contact), before the job (kit list), the install sop (non-negotiables step detail), quick reference . "}, {"id": "10-quick-reference-md", "t": "quick-reference cheat sheet", "c": " quick-reference cheat sheet the one-page field reference \u2014 the settings, specs, and non-negotiables you need at a glance on a job. this sheet doesn't repeat the step-by-step: work the install from the install sop and the programming from valve programming . non-negotiables \u2014 skip one, earn a callback the same six lines as standards & working with us ; the install sop has the step detail. tie into the main before the water-heater tee \u2014 treats both hot and cold. after the tee = cold only, and the water heater keeps getting hard water. seat the bottom o-ring. missing it leaks 100% of the time. install the brine-tank clip. without it the line leaks and pops off. install the flow restrictor on the drain line. it limits regen waste to 50\u201360 gallons; skip it and every regen wastes hundreds. never run a regen cycle with the brine tank disconnected. running to zero with an open port shoots water out. check every joint before you leave. no pinched rings, no backed-out rings. valve settings by tank type program on first power-up per valve programming . the first regeneration is a startup step \u2014 run it with startup & testing in front of you, never from here. setting standard xl dual capacity 36,000 grains 42,000 grains 48,000 grains primary backwash 6 min 10 min 10 min secondary backwash 3 3 3 regeneration time 2:00 a.m. 2:00 a.m. 2:00 a.m. max days for regen 28 28 28 water hardness tested gpg (work order) tested gpg (work order) tested gpg (work order) notes that keep the table honest: these are programmed regen setpoints , deliberately below the tank's rated capacity (rated: standard 48,000 / xl 64,000 / dual 96,000 grains). never program the rating. hardness = the tested gpg on the work order \u2014 never the factory default of 10. over 30 gpg \u2192 set max days ~14; under 25 gpg \u2192 28. work order missing the number? test on site or call the office \u2014 don't guess. secondary backwash: always 3 , every system. menu order (per valve programming ): time \u2192 date \u2192 capacity \u2192 primary backwash \u2192 secondary backwash \u2192 regen time (2:00 a.m.) \u2192 max days \u2192 hardness. screen order can vary \u2014 the hardness screen sits just under capacity and may come up early; set each value when its screen appears. backing out of the menu (two back presses) launches a regen \u2014 see startup & testing before you do. well dual-tank flag: the katalox light tank (the first/right tank) takes the downflow / air-injection valve , not the city valve. verify the labeled valve is on the correct tank before install. not 100% sure which valve goes where? call the office before you install \u2014 don't guess. see valve programming . orientation cheats flow meter: long side in, arrows in. basket: four grooves \u2192 click. pipe ends: 90 + ring, every time. pipe: curved road pipe, gentle curve; never force a fitting against the ring \u2014 rubbing pushes the clip out. plate: screws, skip the bottom two (pipe holds that side). bypass: arrow in / arrow out; keep fully open or fully closed (pressure only, not softness). ro faucet: both rubber gaskets; spout swivels, base fixed; hand-tightens clockwise. install-day gotchas hand-check the wall cavity before cutting \u2014 line, tee, and wall material in one move. bring the right faucet color and right ro type \u2014 the top two go-back causes. power the ro on while it's still out in the open , then leak-check before tucking. never cut the ro faucet line short \u2014 slack on every line, most on the faucet, so the unit can be pulled for service. galvanized pipe (older ia/il homes): soft water leaches metal off it \u2014 flag it to the customer, recommend repipe where feasible. ~120 psi at the home \u2192 needs a pressure regulator (flag it; not our system's job). key dimensions & specs spec value flow rate 28 gpm main water line 1 inch through-and-through distributor tube 1.25\" (\u2192 28 gpm, no pressure loss) ro waste ratio 2:1 standard tank rated 48,000 grains \u2014 program 36,000 (valve table above) xl tank rated 64,000 grains \u2014 program 42,000 dual tank rated 96,000 grains total (48k resin + 48k carbon) \u2014 program 48,000 media tank 10\" \u00d7 54\" or 12\" \u00d7 52\" depending on configuration \u2014 check the work order carbon tank 10\" diameter \u00d7 60\" tall tankless ro unit 16\" h \u00d7 5.5\" w \u00d7 17\" l ro supply-line stub pokes through ~\u00bc\" on the countertop core components: provalve control valve (ceramic disc), fiberglass nsf tank, jacobi coconut carbon (activated on city, catalytic on wells), resintech cg10 resin, well media = katalox light + catalytic carbon. customer talk-track (quick answers) salt: 1 bag lasts 3\u20134 months; three at once = 9\u201312 months. recommend three, not four (four can overflow). any \"for water softeners\" salt \u2014 never pool salt. running low is fine, never empty . ro filters: change yearly, no tools; red flashing light = due; change all three together. replacements come through our office (~$50 each, ~$150 for the set of three) \u2014 wrong big-box filters can damage the system. ro reset: unplug 10 seconds, plug back in (auto-resets). ro leak: turn the shutoff t tab sideways to cut water to the ro only. \"water isn't soft\" just after install: ~30 min to come into soft water (longer in two-story homes); the hot side may stay slightly hard a while as the old heater clears. noise / murky salt tank at night: normal \u2014 that's the regen cycle (the valve regenerates on demand, roughly once a month, around 2 a.m.) and the brine solution. drain-line freeze: no \u2014 it only carries water during regen, roughly once a month, so it sits empty almost all the time. outdoor installs on hard-freeze nights: have the customer drip a faucet. related: the install sop \u00b7 valve programming \u00b7 troubleshooting "}];
+var items=[].slice.call(document.querySelectorAll('.nav-item')),docs=[].slice.call(document.querySelectorAll('.doc'));
+function resolveDoc(id){var el=document.getElementById(id);if(!el)return docs[0];
+ if(el.classList&&el.classList.contains('doc'))return el;
+ var p=el.closest?el.closest('.doc'):null;return p||docs[0];}
+function show(id,push){var t=resolveDoc(id);docs.forEach(function(d){d.classList.toggle('show',d===t)});
+ items.forEach(function(i){i.classList.toggle('active',i.getAttribute('href')==='#'+t.id)});
+ if(push!==false)history.replaceState(null,'','#'+t.id);
+ var m=document.querySelector('main');if(m&&m.scrollIntoView&&window.innerWidth<880){m.scrollIntoView({block:'start'});}else{window.scrollTo({top:0});}}
+document.addEventListener('click',function(e){var a=e.target.closest?e.target.closest('a'):null;if(!a)return;
+ var h=a.getAttribute('href')||'';if(h.charAt(0)!=='#')return;
+ var el=document.getElementById(h.slice(1));if(!el)return;
+ e.preventDefault();show(h.slice(1));});
+var q=document.getElementById('q');
+q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();
+ items.forEach(function(i,ix){var rec=IDX[ix]||{t:'',c:''};
+  i.classList.toggle('hidden',!!v&&rec.t.indexOf(v)<0&&rec.c.indexOf(v)<0);});});
+document.addEventListener('keydown',function(e){if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}});
+// persistent checklists
+var KEY='installer-guide-checks';
+var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+[].slice.call(document.querySelectorAll('input.ck')).forEach(function(c){
+ if(saved[c.dataset.k])c.checked=true;
+ c.closest('li').classList.toggle('done',c.checked);
+ c.addEventListener('change',function(){saved[c.dataset.k]=c.checked;
+  try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+  c.closest('li').classList.toggle('done',c.checked);});});
+show(location.hash?location.hash.slice(1):docs[0].id,false);
+</script></body></html>
