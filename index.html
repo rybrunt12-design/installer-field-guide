@@ -44,8 +44,8 @@ pre code{background:none;color:inherit;padding:0}
 img,svg{max-width:100%;height:auto}img{border-radius:6px;border:1px solid var(--line);margin:12px 0}
 ul,ol{padding-left:1.4em}li{margin:5px 0}
 li.task{list-style:none;margin-left:-1.2em}
-li.task label{cursor:pointer;display:flex;gap:9px;align-items:baseline}
-li.task input{accent-color:var(--blue);width:16px;height:16px;flex:none;transform:translateY(2px)}
+li.task label{cursor:pointer;display:block;position:relative;padding-left:27px}
+li.task input{position:absolute;left:0;top:4px;accent-color:var(--blue);width:16px;height:16px}
 li.task.done label{color:var(--mut);text-decoration:line-through}
 hr{border:none;border-top:1px solid var(--line);margin:30px 0}
 .warn{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--stub);color:#fff;font-weight:800;font-size:10.5px;margin-right:2px;vertical-align:-2px}
