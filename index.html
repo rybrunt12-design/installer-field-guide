@@ -1908,7 +1908,7 @@ function askAnswer(raw){var box=document.getElementById('answer');if(!raw.trim()
   }}
  h+='</div>';box.innerHTML=h;box.scrollIntoView({block:'nearest'});askAI(raw);}
 // ---- Live AI answers (Cloudflare Worker backend). Empty endpoint = offline-only mode; the curated cards above always work.
-var AI_ENDPOINT='';
+var AI_ENDPOINT='https://kwc-guide-ai.ryan-f6d.workers.dev';
 function fmtAI(s){s=s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
  s=s.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
  return s.replace(/\n/g,'<br>');}
