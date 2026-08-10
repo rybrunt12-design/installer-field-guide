@@ -190,3 +190,37 @@ rewording: "carbon: strong when fresh, capacity-limited; RO: continuous."
 5. **ResinTech configuration guidance ask** — nitrate-tank-before-PFAS-tank
    ordering, and whether chloride off the regenerated nitrate bed shortens
    SIR-110-HP life. Same bar as the Purolite arsenic question (K-06).
+
+---
+
+## R-01 · Ruling — carbon grade for the single-tank city build (2026-08-10)
+
+Saved at Ryan's request from the in-chat walkthrough; post-audit corrected.
+
+**Free-chlorine city (Dubuque, Waterloo, Des Moines proper): activated.**
+Catalytic is wasted money — activated carbon handles free chlorine, and the
+catalytic upcharge buys **zero** extra PFAS removal (PFAS capture is adsorption;
+grade is irrelevant — contact time and cubic feet are what count).
+
+**Chloramine city (Cedar Rapids, Davenport, chloramine DSM suburbs), single
+tank: catalytic as harm reduction only.** Right chemistry, undersized container.
+WQA (grade B): standard GAC needs ~10 min EBCT for chloramine vs ~3 min for
+catalytic — but the single tank's 0.5 ft³ layer gives ~45 s at 5 gpm. Catalytic
+turns "barely touches chloramine" into "knocks a real fraction down": slower
+resin wear, less chlorine taste at the tap. **The single tank cannot claim
+chloramine removal at any carbon grade.**
+
+**Chloramine city, correct build: Dual-Tank City with catalytic media** —
+2.5 ft³ gives 2–4 min EBCT at household flows. The chloramine claim belongs to
+this build alone.
+
+**Resin-life framing (per K-01/K-02):** dual-tank resin life is a design
+guarantee — the resin never sees the oxidant. Single-tank resin life under
+chloramine is unquantifiable from desk sources (no manufacturer publishes a
+figure; the Purolite halving rule is for free chlorine). Narrow it with field
+data: a total-chlorine test strip at the tap of an existing Cedar Rapids
+single-tank install, and the softening performance of the oldest CR installs.
+
+**Open dependencies:** (a) Anthony — is catalytic media orderable on city
+builds, single-tank and Dual-Tank City; (b) the actual carbon media datasheet —
+the ~3-min catalytic figure is trade-grade (B) until then.
