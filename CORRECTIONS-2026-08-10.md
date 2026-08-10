@@ -95,6 +95,13 @@ in pilots, ~2.2–3.2× in modeling). But the classic documentation is on
 against a real failure mode) — **fix the citation** or obtain the actual
 nitrate-selective-resin arsenic data from Purolite/ResinTech.
 
+**DECISION 2026-08-10 (Ryan, in chat):** leave the arsenic-dump discussion OUT
+of the customer-facing/sales material for Cedar Rapids and Waterloo — customers
+get kitchen RO anyway, arsenic at these levels (worst case ~2.6 ppb vs 10 ppb
+MCL) is not the worry; nitrate is. The internal pre-quote arsenic test remains
+a separate (open) question for the canon — the sales-copy decision does not by
+itself retire the test-first rule.
+
 ### K-07 · "Plain GAC <20% effective" on chloramine (01-EWG master map)
 
 Direction verified (grade A/B: WQA — standard GAC needs ~10 min EBCT for
