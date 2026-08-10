@@ -231,3 +231,46 @@ single-tank install, and the softening performance of the oldest CR installs.
 **Open dependencies:** (a) Anthony — is catalytic media orderable on city
 builds, single-tank and Dual-Tank City; (b) the actual carbon media datasheet —
 the ~3-min catalytic figure is trade-grade (B) until then.
+
+---
+
+## R-02 · Ruling — carbon placement in PFAS builds (2026-08-10, Ryan's decision)
+
+**Any build that includes a PFAS tank gets a carbon tank AHEAD of the PFAS bed —
+city and well alike.** Rationale: carbon catches long-chain PFAS cheaply and
+renewably; never let the single-use SIR-110-HP bed spend its one life on a job
+carbon does for less. Same economics that put the nitrate tank ahead of the
+PFAS tank.
+
+**Corrected WELL PFAS train** (replaces the carbon-less train in the
+2026-08-09 chat script, which is retired):
+
+```
+WELL: sediment → [iron] → SOFTENER → NITRATE TANK → CARBON → PFAS TANK → 5µm → UV → house · RO at kitchen
+CITY: FULL CARBON TANK → SOFTENER → NITRATE TANK → PFAS TANK → house · RO at kitchen   (unchanged)
+```
+
+(Carbon grade on wells: catalytic, per existing line spec.)
+
+**Canon note:** this AMENDS the "wells: carbon LAST" rule for PFAS builds
+specifically — in a PFAS build the carbon's primary job is shielding the
+disposable bed, so it moves ahead of it. Non-PFAS well builds are unchanged.
+Fold into the canon review on the origin machine.
+
+**Still open:** ResinTech configuration guidance to confirm the full ordering
+(nitrate → carbon → PFAS vs carbon → nitrate → PFAS on wells) — same
+manufacturer-verbatim bar as R-01's datasheet dependency.
+
+---
+
+## Walkthrough closeout (all five items, 2026-08-10)
+
+1. **Peroxide in the guide** — OPEN: awaiting Ryan's answer on what replaces it
+   for sulfur wells (have an answer / ask Anthony / refer out).
+2. **Carbon grade rule** — CLOSED as R-01.
+3. **95–99% RO claim** — ACTION (Ryan's machine): pull the RO unit's NSF/ANSI 58
+   listing and quote only what's on it. One document resolves both the 95–99%
+   PFAS exposure and the unsourced 70–76% nitrate figure (K-08).
+4. **Arsenic warning** — DECIDED: omitted from sales copy (see K-06 decision
+   note); internal test-first rule remains an open canon question.
+5. **Well train missing carbon** — CLOSED as R-02.
