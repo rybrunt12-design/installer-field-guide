@@ -263,6 +263,49 @@ manufacturer-verbatim bar as R-01's datasheet dependency.
 
 ---
 
+## R-04 · DRAFT Canon — Calcite acid-neutralizer (2026-08-10, saved at Ryan's request)
+
+**What it does:** tank of crushed limestone (calcite, NSF/ANSI 60 media). Acidic
+water corrodes plumbing — blue-green stains, pinhole leaks, copper/lead leaching.
+Passing it through calcite dissolves a little media and raises pH. Self-limiting:
+Clack datasheet verbatim — "it corrects pH only enough to reach a non-corrosive
+equilibrium. It does not overcorrect." Media is sacrificial → annual top-up
+(recurring service visit).
+
+**When:** pH < 6.5 at the well survey, or symptoms (green staining, metallic
+taste, pinhole leaks). Calcite alone good to ~pH 6.0; pH 5.3–6.0 blend 10–20%
+Corosex (MgO). **Below ~5.3 the industry answer is soda-ash injection = chemical
+injection = banned per Ryan's standing decision → decline or refer out.**
+
+**Iowa reality (grade D inference on grade-A geology):** Iowa groundwater is
+limestone-fed, very hard, neutral-to-alkaline (USGS); the state well-test panel
+doesn't even include pH. Expect this canon to fire rarely — shallow sand-point
+wells mostly. Keep the rule, don't stock deep.
+
+**Order of operations (amends well train):**
+`SEDIMENT → CALCITE → IRON FILTER → SOFTENER → (anion beds) → UV`
+Mechanisms: iron media have pH floors (Birm 6.8+, greensand 6.2+, Katalox
+5.8–10.5 per spec, best ≥6.5 per trade); calcite ADDS hardness (~1–6 gpg,
+Clack: "it will increase hardness and a softener may be needed") → **re-test
+hardness after the neutralizer and program the valve to the post-calcite
+number.** Heavy-iron exception exists in trade practice (iron filter first to
+protect the calcite bed) — settle with Anthony if it arises. Nitrate/PFAS
+resins are pH 4–10; they don't care.
+
+**Setup:** bed depth 24–30"; backwashing tank if any iron/sediment (8–12
+gpm/ft² — heavy rock, ~4.4–6.5 gpm on a 10" tank, Katalox drain class); upflow
+non-backwashing only on clean water. Sizing tension: Clack service spec 3–6
+gpm/ft² rates a 10" tank at only ~1.6–3.3 gpm continuous → real homes likely
+need 12–13" — get a supplier sizing chart before canon-final.
+
+**SOP addition:** pH test strip in every well-survey kit.
+
+**Open before canon-final:** statewide Iowa well-pH statistic (blocked state
+PDFs — Ryan's machine); supplier sizing chart; Ryan's formal sign-off on the
+below-5.3 refer-out rule.
+
+---
+
 ## Walkthrough closeout (all five items, 2026-08-10)
 
 1. **Peroxide in the guide** — OPEN: awaiting Ryan's answer on what replaces it
